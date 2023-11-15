@@ -14,7 +14,25 @@ namespace Api.Kashilog.Repositories.Kashi.Products {
         public ProductRepository(SqlManager<KashilogConnection> kashilogSqlManager) => KashilogSqlManager = kashilogSqlManager;
 
         public Task<IEnumerable<Product>> FindAllProductAsync() =>
-            KashilogSqlManager.SelectAsync<Product>(SqlForProductResource.FindAllProduct);
+            KashilogSqlManager.SelectAsync<Product>($"""
+                 Select
+                     ProductId            AS ProductId,
+                     ProductRevision      AS ProductRevision,
+                     ValidBeginDateTime   AS ValidBeginDateTime,
+                     ValidEndDateTime     AS ValidEndDateTime,
+                     ProductName          AS ProductName,
+                     LargeCategory        AS LargeCategory,
+                     MiddleCategory       AS MiddleCategory,
+                     SmallCategory        AS SmallCategory,
+                     UnitPrice            AS UnitPrice,
+                     Amount               AS Amount,
+                     AmountType           AS AmountType,
+                     Description          AS Description,
+                     MakerCompanyId       AS MakerCompanyId,
+                     PublisherCompanyId   AS PublisherCompanyId
+                 From
+                     kashi.MstProduct
+                 """);
 
         public Task<IEnumerable<Product>> FindProductByIdAsync(int id) =>
             KashilogSqlManager.SelectAsync<Product>(SqlForProductResource.FindProductById, new { Id = id });
