@@ -1,0 +1,48 @@
+{
+  "productId": 1,
+  "productRevision": 1,
+  "validBeginDateTime": "1994-04-01T00:00:00",
+  "validEndDateTime": "2999-12-31T00:00:00",
+  "productName": "トッポ",
+  "largeCategory": "西洋菓子",
+  "middleCategory": "チョコレート類",
+  "smallCategory": "準チョコレート",
+  "unitPrice": 108,
+  "amount": 2,
+  "amountType": "袋（パック）",
+  "description": "トッポは最後までチョコたっぷり!おいしくなったトッポを、仲間との楽しい会話のお供にどうぞ。",
+  "maker": {
+    "companyId": 2,
+    "companyName": "森永製菓株式会社",
+    "zipCode": "108-8403",
+    "country": "日本",
+    "city": "東京都港区",
+    "address": "芝5-33-1",
+    "telephoneNumber": "0120-560-162"
+  },
+  "publisher": {
+    "companyId": 2,
+    "companyName": "森永製菓株式会社",
+    "zipCode": "108-8403",
+    "country": "日本",
+    "city": "東京都港区",
+    "address": "芝5-33-1",
+    "telephoneNumber": "0120-560-162"
+  },
+  "textures": [
+    {
+      "productId": 10,
+      "textureId": 1,
+      "textureName": "かたい",
+      "value": 4
+    }
+  ],
+  "tastes": [
+    {
+      "productId": 10,
+      "tasteId": 22,
+      "tasteName": "甘い",
+      "value": 2
+    }
+  ]
+}
