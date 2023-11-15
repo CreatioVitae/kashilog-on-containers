@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{12EB1EC5-29FD-4498-A69D-3C51840CDBA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FE2F3B29-B99A-40D1-AF9B-BB17093CA03A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{19695C48-DCAB-4DD8-A302-21FD78CDDA31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Kashilog.Tests", "tests\WebApi.Kashilog.Tests\Api.Kashilog.Tests.csproj", "{2867B660-9AEA-4F58-A832-52D84A7FD7B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{1D3E68B7-A2EB-42A3-AB1D-CF8D0C8924C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{50076B63-F2B4-4795-85E0-B8C8B0C1AE7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainObjects", "DomainObjects", "{AEC8F4C8-C6A7-4A1A-AD29-213F2B8B6C8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CDAF52E1-41C5-4ACC-9AE8-2C823EF4C8A5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainObject.Kashilog", "src\Domain\DomainObject.Kashilog\DomainObject.Kashilog.csproj", "{A52B90A2-A697-43E0-AA01-DF229FD71070}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apis", "Apis", "{8FAED265-1807-4ED3-94C1-7AF49B696469}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{7494684E-3E8B-4BBD-891E-4BE3B6A70A66}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Kashilog", "src\Web\Api.Kashilog\Api.Kashilog.csproj", "{0CC7C6C2-CF9E-4C22-9F1B-E180A65EFA53}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Management.Kashilog", "src\Web\Management.Kashilog\Management.Kashilog.csproj", "{B7BFCCC1-929D-410D-B421-B456BC709F4D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Front.Kashilog", "src\Web\Front.Kashilog\Front.Kashilog.csproj", "{F544ADCD-4012-49A2-9539-A2676679A516}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{EB92F8FB-0F57-48D7-972E-E8632ACB47C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Kashilog", "src\Infrastructure\Databases\Kashilog\Database.Kashilog.csproj\Database.Kashilog.csproj", "{AE186C4B-584D-47F8-B147-600B0F2FA8DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2867B660-9AEA-4F58-A832-52D84A7FD7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2867B660-9AEA-4F58-A832-52D84A7FD7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2867B660-9AEA-4F58-A832-52D84A7FD7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2867B660-9AEA-4F58-A832-52D84A7FD7B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A52B90A2-A697-43E0-AA01-DF229FD71070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A52B90A2-A697-43E0-AA01-DF229FD71070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A52B90A2-A697-43E0-AA01-DF229FD71070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A52B90A2-A697-43E0-AA01-DF229FD71070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CC7C6C2-CF9E-4C22-9F1B-E180A65EFA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CC7C6C2-CF9E-4C22-9F1B-E180A65EFA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CC7C6C2-CF9E-4C22-9F1B-E180A65EFA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CC7C6C2-CF9E-4C22-9F1B-E180A65EFA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7BFCCC1-929D-410D-B421-B456BC709F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7BFCCC1-929D-410D-B421-B456BC709F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7BFCCC1-929D-410D-B421-B456BC709F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7BFCCC1-929D-410D-B421-B456BC709F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F544ADCD-4012-49A2-9539-A2676679A516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F544ADCD-4012-49A2-9539-A2676679A516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F544ADCD-4012-49A2-9539-A2676679A516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F544ADCD-4012-49A2-9539-A2676679A516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE186C4B-584D-47F8-B147-600B0F2FA8DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE186C4B-584D-47F8-B147-600B0F2FA8DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE186C4B-584D-47F8-B147-600B0F2FA8DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE186C4B-584D-47F8-B147-600B0F2FA8DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2867B660-9AEA-4F58-A832-52D84A7FD7B6} = {19695C48-DCAB-4DD8-A302-21FD78CDDA31}
+		{50076B63-F2B4-4795-85E0-B8C8B0C1AE7C} = {1D3E68B7-A2EB-42A3-AB1D-CF8D0C8924C3}
+		{AEC8F4C8-C6A7-4A1A-AD29-213F2B8B6C8F} = {1D3E68B7-A2EB-42A3-AB1D-CF8D0C8924C3}
+		{CDAF52E1-41C5-4ACC-9AE8-2C823EF4C8A5} = {1D3E68B7-A2EB-42A3-AB1D-CF8D0C8924C3}
+		{A52B90A2-A697-43E0-AA01-DF229FD71070} = {AEC8F4C8-C6A7-4A1A-AD29-213F2B8B6C8F}
+		{8FAED265-1807-4ED3-94C1-7AF49B696469} = {12EB1EC5-29FD-4498-A69D-3C51840CDBA1}
+		{7494684E-3E8B-4BBD-891E-4BE3B6A70A66} = {12EB1EC5-29FD-4498-A69D-3C51840CDBA1}
+		{0CC7C6C2-CF9E-4C22-9F1B-E180A65EFA53} = {8FAED265-1807-4ED3-94C1-7AF49B696469}
+		{B7BFCCC1-929D-410D-B421-B456BC709F4D} = {7494684E-3E8B-4BBD-891E-4BE3B6A70A66}
+		{F544ADCD-4012-49A2-9539-A2676679A516} = {7494684E-3E8B-4BBD-891E-4BE3B6A70A66}
+		{AE186C4B-584D-47F8-B147-600B0F2FA8DB} = {EB92F8FB-0F57-48D7-972E-E8632ACB47C6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5CFAEE9-EDD0-472C-B118-B988CC86BD3D}
+	EndGlobalSection
+EndGlobal

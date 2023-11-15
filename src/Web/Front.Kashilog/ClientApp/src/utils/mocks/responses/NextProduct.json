@@ -1,0 +1,48 @@
+{
+  "productId": 3,
+  "productRevision": 1,
+  "validBeginDateTime": "1993-01-01T00:00:00",
+  "validEndDateTime": "2999-12-31T00:00:00",
+  "productName": "堅あげポテト　はまぐりだし味",
+  "largeCategory": "西洋菓子",
+  "middleCategory": "スナック類",
+  "smallCategory": "ポテトチップス",
+  "unitPrice": 108,
+  "amount": 63,
+  "amountType": "g(グラム)",
+  "description": "噛むほどうまい ! 堅い食感でじゃがいものおいしさをじっくり楽しめるポテトチップスです。\r\n        はまぐりのお吸い物のような、旨み感じる堅あげポテトです。噛むほどにじゅわっと感じる貝のおだしの味わいがくせになるおいしさです。",
+  "maker": {
+    "companyId": 5,
+    "companyName": "カルビー株式会社",
+    "zipCode": "100-0005",
+    "country": "日本",
+    "city": "東京都千代田区",
+    "address": "丸の内1-8-3 丸の内トラストタワー本館22階",
+    "telephoneNumber": "0120-55-8570"
+  },
+  "publisher": {
+    "companyId": 5,
+    "companyName": "カルビー株式会社",
+    "zipCode": "100-0005",
+    "country": "日本",
+    "city": "東京都千代田区",
+    "address": "丸の内1-8-3 丸の内トラストタワー本館22階",
+    "telephoneNumber": "0120-55-8570"
+  },
+  "textures": [
+    {
+      "productId": 22,
+      "textureId": 7,
+      "textureName": "パリパリしている",
+      "value": 5
+    }
+  ],
+  "tastes": [
+    {
+      "productId": 22,
+      "tasteId": 12,
+      "tasteName": "しょっぱい",
+      "value": 3
+    }
+  ]
+}
