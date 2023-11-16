@@ -1,13 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <UserSecretsId>7afecdda-7168-4363-97f7-4ac42597e2b6</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <nullable>enable</nullable>
     <DockerfileContext>..\..\..</DockerfileContext>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
+    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -24,19 +25,15 @@
 
   <ItemGroup>
     <PackageReference Include="BclExtensionPack.CoreLib" Version="0.14.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
     <PackageReference Include="Service.Extensions.DependencyInjection" Version="1.10.1" />
     <PackageReference Include="Swagger.Extensions.DependencyInjection" Version="1.3.10.1" />
     <PackageReference Include="WebApiPack" Version="0.15.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\DomainObject.Kashilog\DomainObject.Kashilog.csproj" />
+    <ProjectReference Include="..\..\Domain\DomainObjects\Kashilog\DomainObject.Kashilog.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Databases\Kashilog\Database.Kashilog.csproj\Database.Kashilog.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,21 +42,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>SqlForCompanyResource.resx</DependentUpon>
     </Compile>
-    <Compile Update="Repositories\Kashi\Products\Sqls\SqlForProductResource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>SqlForProductResource.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Repositories\Enterprise\Companies\Sqls\SqlForCompanyResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SqlForCompanyResource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Repositories\Kashi\Products\Sqls\SqlForProductResource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>SqlForProductResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

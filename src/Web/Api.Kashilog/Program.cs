@@ -1,9 +1,5 @@
 using Api.Kashilog;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using Serilog;
-using System;
 
 Log.Logger = new ConfigurationBuilder().CreateDefaultLogger();
 

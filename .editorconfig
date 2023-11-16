@@ -259,3 +259,6 @@ dotnet_diagnostic.CA1829.severity=error
 
 # CA1828：AnyAsync（）を使用できる場合は、CountAsync（）またはLongCountAsync（）を使用しないでください
 dotnet_diagnostic.CA1828.severity=warning
+
+# フィールド初期化とキャプチャの両方に利用されるのを避ける
+dotnet_diagnostic.CS9124.severity = error

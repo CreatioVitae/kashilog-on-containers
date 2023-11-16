@@ -1,51 +1,123 @@
-using Api.Kashilog.Repositories.Kashi.Products.Sqls;
 using Database.Kashilog.DbContexts;
 using DomainObject.Kashilog.Kashi.Entities;
 using ORMIntegrator;
 using Service.Extensions.DependencyInjection.Markers;
 
-namespace Api.Kashilog.Repositories.Kashi.Products {
-    public class ProductRepository : IRepository {
+namespace Api.Kashilog.Repositories.Kashi.Products;
+public class ProductRepository(SqlManager<KashilogContext> sqlManager) : IRepository {
 
-        private SqlManager<KashilogContext> KashilogSqlManager { get; }
+    private SqlManager<KashilogContext> KashilogSqlManager { get; } = sqlManager;
 
-        public ProductRepository(SqlManager<KashilogContext> sqlManager) =>
-            KashilogSqlManager = sqlManager;
+    public Task<IEnumerable<Product>> FindAllProductAsync() =>
+        KashilogSqlManager.SelectAsync<Product>($"""
+             SELECT
+                 ProductId            AS ProductId,
+                 ProductRevision      AS ProductRevision,
+                 ValidBeginDateTime   AS ValidBeginDateTime,
+                 ValidEndDateTime     AS ValidEndDateTime,
+                 ProductName          AS ProductName,
+                 LargeCategory        AS LargeCategory,
+                 MiddleCategory       AS MiddleCategory,
+                 SmallCategory        AS SmallCategory,
+                 UnitPrice            AS UnitPrice,
+                 Amount               AS Amount,
+                 AmountType           AS AmountType,
+                 Description          AS Description,
+                 MakerCompanyId       AS MakerCompanyId,
+                 PublisherCompanyId   AS PublisherCompanyId
+             FROM
+                 kashi.MstProduct
+             """);
 
-        public Task<IEnumerable<Product>> FindAllProductAsync() =>
-            KashilogSqlManager.SelectAsync<Product>($"""
-                 Select
-                     ProductId            AS ProductId,
-                     ProductRevision      AS ProductRevision,
-                     ValidBeginDateTime   AS ValidBeginDateTime,
-                     ValidEndDateTime     AS ValidEndDateTime,
-                     ProductName          AS ProductName,
-                     LargeCategory        AS LargeCategory,
-                     MiddleCategory       AS MiddleCategory,
-                     SmallCategory        AS SmallCategory,
-                     UnitPrice            AS UnitPrice,
-                     Amount               AS Amount,
-                     AmountType           AS AmountType,
-                     Description          AS Description,
-                     MakerCompanyId       AS MakerCompanyId,
-                     PublisherCompanyId   AS PublisherCompanyId
-                 From
-                     kashi.MstProduct
-                 """);
+    public Task<Product?> FindProductByIdAsync(int id) =>
+        KashilogSqlManager.SelectSingleOrDefaultAsync<Product>($"""
+            SELECT
+                ProductId            AS ProductId,
+                ProductRevision      AS ProductRevision,
+                ValidBeginDateTime   AS ValidBeginDateTime,
+                ValidEndDateTime     AS ValidEndDateTime,
+                ProductName          AS ProductName,
+                LargeCategory        AS LargeCategory,
+                MiddleCategory       AS MiddleCategory,
+                SmallCategory        AS SmallCategory,
+                UnitPrice            AS UnitPrice,
+                Amount               AS Amount,
+                AmountType           AS AmountType,
+                Description          AS Description,
+                MakerCompanyId       AS MakerCompanyId,
+                PublisherCompanyId   AS PublisherCompanyId
+            FROM
+                kashi.MstProduct
+            WHERE
+                ProductId = @Id
+            """, new { Id = id });
 
-        public Task<IEnumerable<Product>> FindProductByIdAsync(int id) =>
-            KashilogSqlManager.SelectAsync<Product>(SqlForProductResource.FindProductById, new { Id = id });
+    public Task<IEnumerable<ProductTaste>> FindProductTasteByProductIdAsync(int productId) =>
+        KashilogSqlManager.SelectAsync<ProductTaste>($"""
+            SELECT
+                ProductTaste.ProductId  AS ProductId,
+                ProductTaste.TasteId    AS TasteId,
+                Taste.TasteName         AS TasteName,
+                ProductTaste.Value      AS Value
+            FROM
+                kashi.MstProductTaste ProductTaste
+            INNER JOIN
+                Kashi.CmnTaste Taste
+            ON
+                ProductTaste.TasteId = Taste.TasteId
+            WHERE
+                ProductTaste.ProductId = @ProductId
+            """,
+            new { ProductId = productId });
 
-        public Task<IEnumerable<ProductTaste>> FindProductTasteByProductIdAsync(int productId) =>
-            KashilogSqlManager.SelectAsync<ProductTaste>(SqlForProductResource.FindProductTasteByProductId, new { ProductId = productId });
+    public Task<IEnumerable<ProductTaste>> FindProductTasteInProductIdsAsync(IEnumerable<int> productIds) =>
+        KashilogSqlManager.SelectAsync<ProductTaste>($"""
+            SELECT
+                ProductTaste.ProductId  AS ProductId,
+                ProductTaste.TasteId    AS TasteId,
+                Taste.TasteName         AS TasteName,
+                ProductTaste.Value      AS Value
+            FROM
+              kashi.MstProductTaste ProductTaste
+            INNER JOIN
+                Kashi.CmnTaste Taste
+            ON
+                ProductTaste.TasteId = Taste.TasteId
+            WHERE
+                ProductTaste.ProductId In @ProductIds
+            """, new { ProductIds = productIds });
 
-        public Task<IEnumerable<ProductTaste>> FindProductTasteInProductIdsAsync(IEnumerable<int> productIds) =>
-            KashilogSqlManager.SelectAsync<ProductTaste>(SqlForProductResource.FindProductTasteInProductIds, new { ProductIds = productIds });
+    public Task<IEnumerable<ProductTexture>> FindProductTextureByProductIdAsync(int productId) =>
+        KashilogSqlManager.SelectAsync<ProductTexture>($"""
+            SELECT
+                ProductTexture.ProductId    AS ProductId,
+                ProductTexture.TextureId    AS TextureId,
+                Texture.TextureName         AS TextureName,
+                ProductTexture.Value        AS Value
+            FROM
+                kashi.MstProductTexture ProductTexture
+            INNER JOIN
+                Kashi.CmnTexture Texture
+            ON
+                ProductTexture.TextureId = Texture.TextureId
+            WHERE
+                ProductTexture.ProductId = @ProductId
+            """, new { ProductId = productId });
 
-        public Task<IEnumerable<ProductTexture>> FindProductTextureByProductIdAsync(int productId) =>
-            KashilogSqlManager.SelectAsync<ProductTexture>(SqlForProductResource.FindProductTextureByProductId, new { ProductId = productId });
-
-        public Task<IEnumerable<ProductTexture>> FindProductTextureInProductIdsAsync(IEnumerable<int> productIds) =>
-            KashilogSqlManager.SelectAsync<ProductTexture>(SqlForProductResource.FindProductTextureInProductIds, new { ProductIds = productIds });
-    }
+    public Task<IEnumerable<ProductTexture>> FindProductTextureInProductIdsAsync(IEnumerable<int> productIds) =>
+        KashilogSqlManager.SelectAsync<ProductTexture>($"""
+            SELECT
+                ProductTexture.ProductId    AS ProductId,
+                ProductTexture.TextureId    AS TextureId,
+                Texture.TextureName         AS TextureName,
+                ProductTexture.Value        AS Value
+            FROM
+                kashi.MstProductTexture ProductTexture
+            INNER JOIN
+                Kashi.CmnTexture Texture
+            ON
+                ProductTexture.TextureId = Texture.TextureId
+            WHERE
+                ProductTexture.ProductId In @ProductIds
+            """, new { ProductIds = productIds });
 }

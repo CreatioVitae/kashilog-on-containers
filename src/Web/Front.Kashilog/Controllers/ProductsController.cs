@@ -14,7 +14,7 @@ public class ProductsController : Controller {
     public IActionResult Index() {
         ViewBag.ApiUrl = Configuration["KashilogSettings:ApiUrl"] ?? throw new InvalidOperationException();
 
-        ViewBag.DeviceType = Request.Headers.UserAgent.IsAny(ua => ua.GetDeviceType() == DeviceType.Smartphone) ? DeviceType.Smartphone : DeviceType.Pc;
+        ViewBag.DeviceType = Request.Headers.UserAgent.IsAny(ua => ua.GetDeviceType() == DeviceType.SmartPhone) ? DeviceType.SmartPhone : DeviceType.Pc;
 
         return View();
     }
@@ -31,6 +31,6 @@ static file class StringExtensions {
             return DeviceType.Pc;
         }
 
-        return userAgent.Contains("iPhone") || userAgent.Contains("Android") ? DeviceType.Smartphone : DeviceType.Pc;
+        return userAgent.Contains("iPhone") || userAgent.Contains("Android") ? DeviceType.SmartPhone : DeviceType.Pc;
     }
 }

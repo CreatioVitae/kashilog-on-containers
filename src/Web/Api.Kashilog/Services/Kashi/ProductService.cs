@@ -1,11 +1,8 @@
+using Api.Kashilog.Repositories.Enterprise.Companies;
+using Api.Kashilog.Repositories.Kashi.Products;
 using DomainObject.Kashilog.Kashi.Entities;
 using DomainObject.Kashilog.Kashi.QueryResults;
 using Service.Extensions.DependencyInjection.Markers;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api.Kashilog.Repositories.Enterprise.Companies;
-using Api.Kashilog.Repositories.Kashi.Products;
 
 namespace Api.Kashilog.Services.Kashi {
     public class ProductService : IService {
@@ -76,7 +73,7 @@ namespace Api.Kashilog.Services.Kashi {
 
         public async ValueTask<ProductResult?> GetProductByIdAsync(int id) {
 
-            var product = (await ProductRepository.FindProductByIdAsync(id)).SingleOrDefault();
+            var product = await ProductRepository.FindProductByIdAsync(id);
 
             return product == null
                 ? null
