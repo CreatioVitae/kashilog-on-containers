@@ -1,14 +1,10 @@
-using DomainObject.Kashilog.Kashi.QueryResults;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Api.Kashilog.Services.Kashi;
-using WebApiPack.Controllers;
+using DomainObject.Kashilog.Kashi.QueryResults;
 
 namespace Api.Kashilog.Controllers {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("product")]
     public class ProductController : ControllerBase {
 
         private ProductService ProductService { get; }

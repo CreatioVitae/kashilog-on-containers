@@ -62,29 +62,6 @@ namespace Api.Kashilog.Repositories.Kashi.Products.Sqls {
         
         /// <summary>
         ///   Select
-        ///	ProductId				AS ProductId,
-        ///	ProductRevision			AS ProductRevision,	
-        ///	ValidBeginDateTime		AS ValidBeginDateTime,
-        ///	ValidEndDateTime		AS ValidEndDateTime,		
-        ///	ProductName				AS ProductName,			
-        ///	LargeCategory			AS LargeCategory,		
-        ///	MiddleCategory			AS MiddleCategory,
-        ///	SmallCategory			AS SmallCategory,			
-        ///	UnitPrice				AS UnitPrice,
-        ///	Amount					AS Amount,
-        ///	AmountType				AS AmountType,
-        ///	Description				AS Description,
-        ///	MakerCompanyId			AS MakerCompanyId,
-        ///	PublisherCompanyId		AS PublisherCompany [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string FindProductById {
-            get {
-                return ResourceManager.GetString("FindProductById", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Select
         ///	ProductTaste.ProductId	AS ProductId,
         ///	ProductTaste.TasteId	AS TasteId,
         ///	Taste.TasteName			AS TasteName,
