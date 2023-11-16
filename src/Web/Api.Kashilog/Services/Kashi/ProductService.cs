@@ -1,11 +1,8 @@
+using Api.Kashilog.Repositories.Enterprise.Companies;
+using Api.Kashilog.Repositories.Kashi.Products;
 using DomainObject.Kashilog.Kashi.Entities;
 using DomainObject.Kashilog.Kashi.QueryResults;
 using Service.Extensions.DependencyInjection.Markers;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api.Kashilog.Repositories.Enterprise.Companies;
-using Api.Kashilog.Repositories.Kashi.Products;
 
 namespace Api.Kashilog.Services.Kashi {
     public class ProductService : IService {
@@ -26,7 +23,7 @@ namespace Api.Kashilog.Services.Kashi {
                 return null;
             }
 
-            var allProductId = allProducts.Select(product => product.ProductId).AsEnumerable();
+            var allProductId = allProducts.Select(product => product.ProductId).ToArray();
 
             var referencedProductTextures = await ProductRepository.FindProductTextureInProductIdsAsync(allProductId);
 
