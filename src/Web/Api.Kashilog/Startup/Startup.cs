@@ -1,11 +1,5 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-
 // ReSharper disable once CheckNamespace
-namespace Api.Kashilog; 
+namespace Api.Kashilog;
 public class Startup {
     public Startup(IConfiguration configuration) => Configuration = configuration;
 

@@ -1,48 +1,37 @@
-using MicroORMWrapper;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Data.SqlClient;
-using System.IO;
-using System.Threading.Tasks;
-using Api.Kashilog.Test.DatabaseConnections;
-using Xunit;
+using Api.Kashilog.Tests.TestContexts;
 
-namespace Api.Kashilog.Tests {
+namespace Api.Kashilog.Tests; 
+public class ProductTest : IDisposable, IClassFixture<ApiKashilogTestContext> {
+    ApiKashilogTestContext TestContext { get; }
 
-    public class ProductTest {
-        SqlManager<KashilogConnection> SqlManager { get; }
+    public ProductTest(ApiKashilogTestContext testContext) =>
+        TestContext = testContext;
 
-        public ProductTest() {
-            var testRootPath = new FileInfo(typeof(EnvironmentInfo).Assembly.Location).Directory.FullName;
+    [Fact]
+    public void AlwaysTrueTest() {
+        var expect = true;
 
-            var configuration = new ConfigurationBuilder().SetBasePath(testRootPath).AddJsonFile(EnvironmentInfo.AppSettingsFileName, optional: false).AddEnvironmentVariables().Build();
-
-            SqlManager = new SqlManager<KashilogConnection>(new KashilogConnection() {
-                ConnectionName = nameof(KashilogConnection),
-                DbConnection = new SqlConnection(configuration[$"kashilogDatabaseConfig:connectionString"])
-            });
-        }
-
-        [Fact]
-        public void AlwaysTrueTest() {
-            var expect = true;
-
-            Assert.True(expect);
-        }
-
-        [Fact]
-        public void AlwaysFalseTest() {
-            var expect = false;
-
-            Assert.False(expect);
-        }
-
-        [Fact]
-        public async Task DatabaseConnectionTest() {
-            var expectCount = 0;
-
-            var actualCount = await SqlManager.GetValueAsync<int>(@"SELECT COUNT(*) FROM kashi.MstProduct;");
-
-            Assert.Equal(expectCount, actualCount);
-        }
+        Assert.True(expect);
     }
+
+    [Fact]
+    public void AlwaysFalseTest() {
+        var expect = false;
+
+        Assert.False(expect);
+    }
+
+    [Fact]
+    public async Task DatabaseConnectionTest() {
+        await using var sqlManager = TestContext.GetSqlManager();
+
+        var expectCount = 0;
+
+        var actualCount = await sqlManager.GetValueAsync<int>(@"SELECT COUNT(*) FROM kashi.MstProduct;");
+
+        Assert.Equal(expectCount, actualCount);
+    }
+
+    public void Dispose() =>
+        GC.SuppressFinalize(this);
 }

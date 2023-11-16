@@ -23,18 +23,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BclExtensionPack.CoreLib" Version="0.10.1" />
-    <PackageReference Include="MicroORMWrapper" Version="1.0.0" />
-    <PackageReference Include="MicroORMWrapper.Extensions.DependencyInjection" Version="1.0.0" />
+    <PackageReference Include="BclExtensionPack.CoreLib" Version="0.14.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
-    <PackageReference Include="Service.Extensions.DependencyInjection" Version="1.4.1.3" />
-    <PackageReference Include="Swagger.Extensions.DependencyInjection" Version="1.2.0.1" />
-    <PackageReference Include="WebApiPack" Version="0.9.25.3" />
-    <PackageReference Include="WebPack.CoreLib" Version="0.9.23" />
+    <PackageReference Include="Service.Extensions.DependencyInjection" Version="1.10.1" />
+    <PackageReference Include="Swagger.Extensions.DependencyInjection" Version="1.3.10.1" />
+    <PackageReference Include="WebApiPack" Version="0.15.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\DomainObject.Kashilog\DomainObject.Kashilog.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Databases\Kashilog\Database.Kashilog.csproj\Database.Kashilog.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,16 +1,15 @@
-using DomainObject.Kashilog.Enterprise;
-using MicroORMWrapper;
-using Service.Extensions.DependencyInjection.Markers;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Api.Kashilog.Repositories.DatabaseConnections;
 using Api.Kashilog.Repositories.Enterprise.Companies.Sqls;
+using Database.Kashilog.DbContexts;
+using DomainObject.Kashilog.Enterprise;
+using ORMIntegrator;
+using Service.Extensions.DependencyInjection.Markers;
 
 namespace Api.Kashilog.Repositories.Enterprise.Companies {
     public class CompanyRepository : IRepository {
-        private SqlManager<KashilogConnection> SqlManager { get; }
+        private SqlManager<KashilogContext> SqlManager { get; }
 
-        public CompanyRepository(SqlManager<KashilogConnection> sqlManager) => SqlManager = sqlManager;
+        public CompanyRepository(SqlManager<KashilogContext> sqlManager) =>
+            SqlManager = sqlManager;
 
         public Task<IEnumerable<Company>> FindAllCompanyAsync() => SqlManager.SelectAsync<Company>(SqlForCompanyResource.FindAllCompany);
 

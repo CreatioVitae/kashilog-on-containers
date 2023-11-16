@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 // ReSharper disable once CheckNamespace
-namespace Database.Members;
+namespace Database.Kashilog;
 
 public static class StartupExtensionLibrary {
     public static IServiceCollection AddSqlManagerFromKashilogDatabase(this IServiceCollection services, IConfiguration configuration, IDefaultEnvironmentAccessor defaultEnvironment) =>
