@@ -1,33 +1,35 @@
+using Api.Kashilog;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
 
-namespace Api.Kashilog {
-    public class Program {
-        public static void Main(string[] args) {
-            Log.Logger = new ConfigurationBuilder().CreateDefaultLogger();
+Log.Logger = new ConfigurationBuilder().CreateDefaultLogger();
 
-            try {
-                Log.Information("Starting Web Host");
+try {
+    Log.Information("Starting Web Host");
 
-                CreateHostBuilder(args).Build().Run();
-            }
-            catch (Exception exception) {
-                Log.Fatal(exception, "Host terminated unexpectedly");
-            }
-            finally {
-                Log.CloseAndFlush();
-            }
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) => Host.CreateDefaultBuilder(args)
-                .UseSerilog()
-                .ConfigureWebHostDefaults(webBuilder => {
-                    webBuilder
-                    .ConfigureKestrel(options => options.AddServerHeader = false)
-                    .UseStartup<Startup>();
-                });
-    }
+    CreateHostBuilder(args).Build().Run();
 }
+catch (Exception exception) {
+    Log.Fatal(exception, "Host terminated unexpectedly");
+}
+finally {
+    Log.CloseAndFlush();
+}
+
+static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.
+        CreateDefaultBuilder(args)
+        .UseSerilog()
+        .ConfigureAppConfiguration(config => config.AddEnvironmentVariables())
+        .ConfigureWebHostDefaults(webBuilder => {
+            webBuilder
+                .ConfigureKestrel(options => options.AddServerHeader = false)
+                .UseStartup<Startup>();
+
+            if (DefaultWebEnvironment.WebApps.IsNotDevelopment()) {
+                // setting points : is not Local dev case... 
+            }
+        });

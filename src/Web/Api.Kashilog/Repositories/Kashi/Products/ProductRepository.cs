@@ -1,17 +1,16 @@
-using DomainObject.Kashilog.Kashi.Entities;
-using MicroORMWrapper;
-using Service.Extensions.DependencyInjection.Markers;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Api.Kashilog.Repositories.DatabaseConnections;
 using Api.Kashilog.Repositories.Kashi.Products.Sqls;
+using Database.Kashilog.DbContexts;
+using DomainObject.Kashilog.Kashi.Entities;
+using ORMIntegrator;
+using Service.Extensions.DependencyInjection.Markers;
 
 namespace Api.Kashilog.Repositories.Kashi.Products {
     public class ProductRepository : IRepository {
 
-        private SqlManager<KashilogConnection> KashilogSqlManager { get; }
+        private SqlManager<KashilogContext> KashilogSqlManager { get; }
 
-        public ProductRepository(SqlManager<KashilogConnection> kashilogSqlManager) => KashilogSqlManager = kashilogSqlManager;
+        public ProductRepository(SqlManager<KashilogContext> sqlManager) =>
+            KashilogSqlManager = sqlManager;
 
         public Task<IEnumerable<Product>> FindAllProductAsync() =>
             KashilogSqlManager.SelectAsync<Product>($"""
