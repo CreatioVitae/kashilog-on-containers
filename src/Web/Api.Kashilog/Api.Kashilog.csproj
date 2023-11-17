@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\DomainObject.Kashilog\DomainObject.Kashilog.csproj" />
+    <ProjectReference Include="..\..\Domain\DomainObjects\Kashilog\DomainObject.Kashilog.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Databases\Kashilog\Database.Kashilog.csproj\Database.Kashilog.csproj" />
   </ItemGroup>
 

@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\DomainObject.Kashilog\DomainObject.Kashilog.csproj" />
+    <ProjectReference Include="..\..\Domain\DomainObjects\Kashilog\DomainObject.Kashilog.csproj" />
   </ItemGroup>
 
 </Project>
