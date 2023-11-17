@@ -14,7 +14,7 @@ namespace Api.Kashilog.Repositories.Kashi.Products {
 
         public Task<IEnumerable<Product>> FindAllProductAsync() =>
             KashilogSqlManager.SelectAsync<Product>($"""
-                 SELECT
+                 Select
                      ProductId            AS ProductId,
                      ProductRevision      AS ProductRevision,
                      ValidBeginDateTime   AS ValidBeginDateTime,
@@ -33,17 +33,17 @@ namespace Api.Kashilog.Repositories.Kashi.Products {
                      kashi.MstProduct
                  """);
 
-        public Task<IEnumerable<Product>> FindProductByIdAsync(int id) =>
-            KashilogSqlManager.SelectAsync<Product>($"""
+        public Task<Product?> FindProductByIdAsync(int id) =>
+            KashilogSqlManager.SelectSingleOrDefaultAsync<Product>($"""
                 SELECT
                     ProductId            AS ProductId,
-                    ProductRevision      AS ProductRevision,	
+                    ProductRevision      AS ProductRevision,
                     ValidBeginDateTime   AS ValidBeginDateTime,
-                    ValidEndDateTime     AS ValidEndDateTime,		
-                    ProductName          AS ProductName,			
-                    LargeCategory        AS LargeCategory,		
+                    ValidEndDateTime     AS ValidEndDateTime,
+                    ProductName          AS ProductName,
+                    LargeCategory        AS LargeCategory,
                     MiddleCategory       AS MiddleCategory,
-                    SmallCategory        AS SmallCategory,			
+                    SmallCategory        AS SmallCategory,
                     UnitPrice            AS UnitPrice,
                     Amount               AS Amount,
                     AmountType           AS AmountType,
@@ -51,10 +51,10 @@ namespace Api.Kashilog.Repositories.Kashi.Products {
                     MakerCompanyId       AS MakerCompanyId,
                     PublisherCompanyId   AS PublisherCompanyId
                 From
-                kashi.MstProduct
+                    kashi.MstProduct
                 Where
-                ProductId = @Id
-            """, new { Id = id });
+                    ProductId = @Id
+                """, new { Id = id });
 
         public Task<IEnumerable<ProductTaste>> FindProductTasteByProductIdAsync(int productId) =>
             KashilogSqlManager.SelectAsync<ProductTaste>(SqlForProductResource.FindProductTasteByProductId, new { ProductId = productId });

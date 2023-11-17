@@ -23,7 +23,7 @@ namespace Api.Kashilog.Services.Kashi {
                 return null;
             }
 
-            var allProductId = allProducts.Select(product => product.ProductId).ToArray();
+            var allProductId = allProducts.Select(product => product.ProductId).AsEnumerable();
 
             var referencedProductTextures = await ProductRepository.FindProductTextureInProductIdsAsync(allProductId);
 
@@ -73,7 +73,7 @@ namespace Api.Kashilog.Services.Kashi {
 
         public async ValueTask<ProductResult?> GetProductByIdAsync(int id) {
 
-            var product = (await ProductRepository.FindProductByIdAsync(id)).SingleOrDefault();
+            var product = (await ProductRepository.FindProductByIdAsync(id));
 
             return product == null
                 ? null

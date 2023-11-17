@@ -1,18 +1,22 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER app
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 8080
+EXPOSE 8081
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Management.Kashilog/Management.Kashilog.csproj", "Management.Kashilog/"]
-RUN dotnet restore "Management.Kashilog/Management.Kashilog.csproj"
+COPY ["src/Web/Management.Kashilog/Management.Kashilog.csproj", "src/Web/Management.Kashilog/"]
+COPY ["src/Domain/DomainObject.Kashilog/DomainObject.Kashilog.csproj", "src/Domain/DomainObject.Kashilog/"]
+RUN dotnet restore "./src/Web/Management.Kashilog/./Management.Kashilog.csproj"
 COPY . .
-WORKDIR "/src/Management.Kashilog"
-RUN dotnet build "Management.Kashilog.csproj" -c Release -o /app/build
+WORKDIR "/src/src/Web/Management.Kashilog"
+RUN dotnet build "./Management.Kashilog.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Management.Kashilog.csproj" -c Release -o /app/publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./Management.Kashilog.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
