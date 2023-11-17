@@ -14,7 +14,7 @@ namespace Api.Kashilog.Repositories.Kashi.Products {
 
         public Task<IEnumerable<Product>> FindAllProductAsync() =>
             KashilogSqlManager.SelectAsync<Product>($"""
-                 SELECT
+                 Select
                      ProductId            AS ProductId,
                      ProductRevision      AS ProductRevision,
                      ValidBeginDateTime   AS ValidBeginDateTime,
@@ -34,27 +34,7 @@ namespace Api.Kashilog.Repositories.Kashi.Products {
                  """);
 
         public Task<IEnumerable<Product>> FindProductByIdAsync(int id) =>
-            KashilogSqlManager.SelectAsync<Product>($"""
-                SELECT
-                    ProductId            AS ProductId,
-                    ProductRevision      AS ProductRevision,	
-                    ValidBeginDateTime   AS ValidBeginDateTime,
-                    ValidEndDateTime     AS ValidEndDateTime,		
-                    ProductName          AS ProductName,			
-                    LargeCategory        AS LargeCategory,		
-                    MiddleCategory       AS MiddleCategory,
-                    SmallCategory        AS SmallCategory,			
-                    UnitPrice            AS UnitPrice,
-                    Amount               AS Amount,
-                    AmountType           AS AmountType,
-                    Description          AS Description,
-                    MakerCompanyId       AS MakerCompanyId,
-                    PublisherCompanyId   AS PublisherCompanyId
-                From
-                kashi.MstProduct
-                Where
-                ProductId = @Id
-            """, new { Id = id });
+            KashilogSqlManager.SelectAsync<Product>(SqlForProductResource.FindProductById, new { Id = id });
 
         public Task<IEnumerable<ProductTaste>> FindProductTasteByProductIdAsync(int productId) =>
             KashilogSqlManager.SelectAsync<ProductTaste>(SqlForProductResource.FindProductTasteByProductId, new { ProductId = productId });
