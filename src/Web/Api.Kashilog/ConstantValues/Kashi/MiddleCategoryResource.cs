@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Api.Kashilog.ConstantValues.Kashi {
@@ -32,7 +31,7 @@ namespace Api.Kashilog.ConstantValues.Kashi {
     //}
 
     internal static class MiddleCategoryResource {
-        internal static readonly ReadOnlyDictionary<int, string> DisplayNames = new (
+        internal static readonly ReadOnlyDictionary<int, string> DisplayNames = new(
             new Dictionary<int, string>(){
                 {1, "スナック類"},
                 {2, "ビスケット類"},

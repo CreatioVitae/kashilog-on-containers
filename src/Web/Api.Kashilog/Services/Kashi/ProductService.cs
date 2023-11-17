@@ -73,7 +73,7 @@ namespace Api.Kashilog.Services.Kashi {
 
         public async ValueTask<ProductResult?> GetProductByIdAsync(int id) {
 
-            var product = (await ProductRepository.FindProductByIdAsync(id));
+            var product = await ProductRepository.FindProductByIdAsync(id);
 
             return product == null
                 ? null
