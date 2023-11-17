@@ -36,23 +36,23 @@ namespace Api.Kashilog.Repositories.Kashi.Products {
         public Task<Product?> FindProductByIdAsync(int id) =>
             KashilogSqlManager.SelectSingleOrDefaultAsync<Product>($"""
                 SELECT
-                    ProductId				AS ProductId,
-                    ProductRevision			AS ProductRevision,	
-                    ValidBeginDateTime		AS ValidBeginDateTime,
-                    ValidEndDateTime		AS ValidEndDateTime,		
-                    ProductName				AS ProductName,			
-                    LargeCategory			AS LargeCategory,		
-                    MiddleCategory			AS MiddleCategory,
-                    SmallCategory			AS SmallCategory,			
-                    UnitPrice				AS UnitPrice,
-                    Amount					AS Amount,
-                    AmountType				AS AmountType,
-                    Description				AS Description,
-                    MakerCompanyId			AS MakerCompanyId,
-                    PublisherCompanyId		AS PublisherCompanyId
-                FROM
+                    ProductId            AS ProductId,
+                    ProductRevision      AS ProductRevision,
+                    ValidBeginDateTime   AS ValidBeginDateTime,
+                    ValidEndDateTime     AS ValidEndDateTime,
+                    ProductName          AS ProductName,
+                    LargeCategory        AS LargeCategory,
+                    MiddleCategory       AS MiddleCategory,
+                    SmallCategory        AS SmallCategory,
+                    UnitPrice            AS UnitPrice,
+                    Amount               AS Amount,
+                    AmountType           AS AmountType,
+                    Description          AS Description,
+                    MakerCompanyId       AS MakerCompanyId,
+                    PublisherCompanyId   AS PublisherCompanyId
+                From
                     kashi.MstProduct
-                WHERE
+                Where
                     ProductId = @Id
                 """, new { Id = id });
 
