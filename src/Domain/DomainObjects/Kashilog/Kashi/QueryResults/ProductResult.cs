@@ -55,8 +55,7 @@ namespace DomainObject.Kashilog.Kashi.QueryResults {
 
             ProductName = product.ProductName;
 
-            LargeCategory = LargeCategoryResource.DisplayNames.GetValueOrDefault(product.LargeCategory)
-                ?? throw new NullReferenceException($"{nameof(LargeCategoryResource.DisplayNames)}-{nameof(LargeCategory)}");
+            LargeCategory = product.LargeCategory.GetLargeCategoryDisplayValue();
 
             MiddleCategory = MiddleCategoryResource.DisplayNames.GetValueOrDefault(product.MiddleCategory)
                 ?? throw new NullReferenceException($"{nameof(MiddleCategoryResource.DisplayNames)}-{nameof(MiddleCategory)}");
@@ -67,8 +66,7 @@ namespace DomainObject.Kashilog.Kashi.QueryResults {
             UnitPrice = product.UnitPrice;
             Amount = product.Amount;
 
-            AmountType = AmountTypeResource.DisplayNames.GetValueOrDefault(product.AmountType)
-                ?? throw new NullReferenceException($"{nameof(AmountTypeResource.DisplayNames)}-{nameof(product.AmountType)}");
+            AmountType = product.AmountType.GetAmountTypeDisplayValue();
 
             Description = product.Description;
 

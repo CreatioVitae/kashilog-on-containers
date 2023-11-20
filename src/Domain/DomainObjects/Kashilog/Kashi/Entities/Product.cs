@@ -1,3 +1,4 @@
+using DomainObject.Kashilog.ConstantValues.Kashi;
 using System;
 
 namespace DomainObject.Kashilog.Kashi.Entities; 
@@ -12,7 +13,7 @@ public class Product {
 
     public string ProductName { get; set; } = default!;
 
-    public int LargeCategory { get; set; }
+    public LargeCategory LargeCategory { get; set; }
 
     public int MiddleCategory { get; set; }
 
@@ -22,7 +23,7 @@ public class Product {
 
     public decimal Amount { get; set; }
 
-    public int AmountType { get; set; }
+    public AmountType AmountType { get; set; }
 
     public string Description { get; set; } = default!;
 
