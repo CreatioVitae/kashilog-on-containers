@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace DomainObject.Kashilog.Kashi.QueryResults;
 
 public class ProductResult(Product product,
-    Company maker, Company publisher, IEnumerable<ProductTexture> textures, IEnumerable<ProductTaste> tastes) {
+    Company? maker, Company? publisher, IEnumerable<ProductTexture> textures, IEnumerable<ProductTaste> tastes) {
     public int ProductId { get; init; } = product.ProductId;
 
     public int ProductRevision { get; init; } = product.ProductRevision;
@@ -32,9 +32,9 @@ public class ProductResult(Product product,
 
     public string Description { get; init; } = product.Description;
 
-    public Company Maker { get; init; } = maker;
+    public Company? Maker { get; init; } = maker;
 
-    public Company Publisher { get; set; } = publisher;
+    public Company? Publisher { get; set; } = publisher;
 
     public IEnumerable<ProductTexture> Textures { get; init; } = textures;
 

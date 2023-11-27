@@ -16,6 +16,8 @@ public class AssemblyInitializer : XunitTestFramework, IDisposable {
         Configuration = new ConfigurationBuilder()
             .SetBasePath(testRootPath).AddJsonFile(EnvironmentInfo.AppSettingsFileName, optional: false).AddEnvironmentVariables().Build();
 
+        Console.WriteLine(Configuration.GetAvailableValueByKey($"kashilogDatabaseConfig:connectionString"));
+
         static SqlManager<KashilogContext> SetupTestDataAndGetSqlManager(IConfiguration configuration) {
             var sqlManager = new SqlManager<KashilogContext>((connectionString, isDevelopment) =>
                 new KashilogContext(connectionString, isDevelopment), configuration.GetAvailableValueByKey($"kashilogDatabaseConfig:connectionString"));
