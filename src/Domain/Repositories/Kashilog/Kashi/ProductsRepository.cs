@@ -1,10 +1,11 @@
 using Database.Kashilog.DbContexts;
 using DomainObject.Kashilog.Kashi.Entities;
 using ORMIntegrator;
+using Repository.Constraints.Kashilog.Kashi;
 using Service.Extensions.DependencyInjection.Markers;
 
-namespace Api.Kashilog.Repositories.Kashi.Products;
-public class ProductRepository(SqlManager<KashilogContext> sqlManager) : IRepository {
+namespace Repository.Kashilog.Kashi;
+public class ProductsRepository(SqlManager<KashilogContext> sqlManager) : IRepository, IProductsRepository {
 
     private SqlManager<KashilogContext> KashilogSqlManager { get; } = sqlManager;
 

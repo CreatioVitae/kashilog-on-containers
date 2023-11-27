@@ -1,8 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
     <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="BclExtensionPack.CoreLib" Version="0.14.1" />
+    <PackageReference Include="Service.Extensions.DependencyInjection" Version="1.10.1" />
+  </ItemGroup>
 </Project>
