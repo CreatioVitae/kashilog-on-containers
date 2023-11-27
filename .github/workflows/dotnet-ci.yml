@@ -1,0 +1,41 @@
+name: .NET CI
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      mssql-kashilog:
+        image: ghcr.io/creatiovitae/kashilogdb:2023-11.14
+        ports:
+          - "1433:1433"  
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Wait for mssql-kashilog service
+      run: |
+        for i in {1..5}; do
+          if curl --fail http://127.0.0.1:1433; then
+            break
+          fi
+          echo "mssql-kashilog service is not responding, retrying..."
+          sleep 10
+          if [ $i -eq 10 ]; then
+            echo "mssql-kashilog service failed to respond after 10 retries"
+            exit 1
+          fi
+        done
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
+      env:
+        TEST_ENVIRONMENT: Ci
