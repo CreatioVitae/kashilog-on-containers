@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/mssql/server:2017-latest as Builder
+FROM mcr.microsoft.com/mssql/server:2022-latest as Builder
 
 ENV ACCEPT_EULA Y
 ENV SA_PASSWORD h0geFuga
@@ -7,6 +7,8 @@ ENV MSSQL_PID Developer
 # LoCale ID(1041=Japanese)
 ENV MSSQL_LCID 1041
 ENV MSSQL_MEMORY_LIMIT_MB 4096
+
+USER root
 
 # unzipとcurlのインストール（apt-get installするために、ダウンロード可能なパッケージのリストを更新する）
 RUN apt-get update && apt-get install -y --no-install-recommends unzip curl \

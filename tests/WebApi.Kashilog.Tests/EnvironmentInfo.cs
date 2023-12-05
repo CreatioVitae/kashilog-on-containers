@@ -1,6 +1,4 @@
-using System;
-
-namespace Api.Kashilog.Tests; 
+namespace Api.Kashilog.Tests;
 internal class EnvironmentInfo {
     internal static bool IsCiTestEnvironment =>
         Environment.GetEnvironmentVariable("TEST_ENVIRONMENT") == "Ci";

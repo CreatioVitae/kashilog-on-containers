@@ -1,11 +1,8 @@
 using Api.Kashilog.Tests.TestContexts;
 
 namespace Api.Kashilog.Tests; 
-public class ProductTest : IDisposable, IClassFixture<ApiKashilogTestContext> {
-    ApiKashilogTestContext TestContext { get; }
-
-    public ProductTest(ApiKashilogTestContext testContext) =>
-        TestContext = testContext;
+public class ProductTest(ApiKashilogTestContext testContext) : IDisposable, IClassFixture<ApiKashilogTestContext> {
+    ApiKashilogTestContext TestContext { get; } = testContext;
 
     [Fact]
     public void AlwaysTrueTest() {
