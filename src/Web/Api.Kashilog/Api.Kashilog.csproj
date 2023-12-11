@@ -37,19 +37,4 @@
     <ProjectReference Include="..\..\Domain\Repositories\Kashilog\Repository.Kashilog.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Databases\Kashilog\Database.Kashilog.csproj\Database.Kashilog.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Repositories\Enterprise\Companies\Sqls\SqlForCompanyResource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>SqlForCompanyResource.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Repositories\Enterprise\Companies\Sqls\SqlForCompanyResource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>SqlForCompanyResource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
 </Project>
