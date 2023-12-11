@@ -12,8 +12,4 @@
     <ProjectReference Include="..\Constraints\Kashilog\Repository.Constraints.Kashilog.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Enterprise\" />
-  </ItemGroup>
-
 </Project>
