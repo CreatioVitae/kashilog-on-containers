@@ -1,11 +1,12 @@
 using Database.Kashilog.DbContexts;
 using DomainObject.Kashilog.Enterprise;
 using ORMIntegrator;
+using Repository.Constraints.Kashilog.Enterprise;
 using Service.Extensions.DependencyInjection.Markers;
 
-namespace Api.Kashilog.Repositories.Enterprise.Companies;
+namespace Repository.Kashilog.Enterprise;
 
-public class CompanyRepository(SqlManager<KashilogContext> sqlManager) : IRepository {
+public class CompaniesRepository(SqlManager<KashilogContext> sqlManager) : IRepository, ICompaniesRepository {
     SqlManager<KashilogContext> SqlManager { get; } = sqlManager;
 
     public Task<IEnumerable<Company>> FindAllCompanyAsync() =>

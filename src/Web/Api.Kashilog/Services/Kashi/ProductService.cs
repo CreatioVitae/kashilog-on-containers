@@ -1,21 +1,15 @@
-using Api.Kashilog.Repositories.Enterprise.Companies;
 using DomainObject.Kashilog.Kashi.Entities;
 using DomainObject.Kashilog.Kashi.QueryResults;
+using Repository.Constraints.Kashilog.Enterprise;
 using Repository.Constraints.Kashilog.Kashi;
 using Service.Extensions.DependencyInjection.Markers;
 
-namespace Api.Kashilog.Services.Kashi; 
+namespace Api.Kashilog.Services.Kashi;
 
-public class ProductService : IService {
+public class ProductService(IProductsRepository productsRepository, ICompaniesRepository companiesRepository) : IService {
+    private IProductsRepository ProductsRepository { get; } = productsRepository;
 
-    private IProductsRepository ProductsRepository { get; }
-
-    private CompanyRepository CompanyRepository { get; }
-
-    public ProductService(IProductsRepository productsRepository, CompanyRepository companyRepository) {
-        ProductsRepository = productsRepository;
-        CompanyRepository = companyRepository;
-    }
+    private ICompaniesRepository CompaniesRepository { get; } = companiesRepository;
 
     public async ValueTask<IEnumerable<ProductResult>?> GetAllProductsAsync() {
         var allProducts = (await ProductsRepository.FindAllProductAsync()).AsList();
@@ -32,7 +26,7 @@ public class ProductService : IService {
 
         static IEnumerable<int> GetReferencedCompanyIds(List<Product> allProducts) => allProducts.Select(m => m.MakerCompanyId).AsEnumerable().Union(allProducts.Select(m => m.PublisherCompanyId).AsEnumerable());
 
-        var referencedCompanies = (await CompanyRepository.FindCompaniesInIdsAsync(GetReferencedCompanyIds(allProducts).Distinct())).AsList();
+        var referencedCompanies = (await CompaniesRepository.FindCompaniesInIdsAsync(GetReferencedCompanyIds(allProducts).Distinct())).AsList();
 
         return allProducts.Select(product =>
             new ProductResult(
@@ -59,7 +53,7 @@ public class ProductService : IService {
 
         static IEnumerable<int> GetReferencedCompanyIds(List<Product> allProducts) => allProducts.Select(m => m.MakerCompanyId).AsEnumerable().Union(allProducts.Select(m => m.PublisherCompanyId).AsEnumerable());
 
-        var referencedCompanies = (await CompanyRepository.FindCompaniesInIdsAsync(GetReferencedCompanyIds(allProducts).Distinct())).AsList();
+        var referencedCompanies = (await CompaniesRepository.FindCompaniesInIdsAsync(GetReferencedCompanyIds(allProducts).Distinct())).AsList();
 
         foreach (var product in allProducts) {
             yield return new ProductResult(
@@ -80,8 +74,8 @@ public class ProductService : IService {
             ? null
             : new ProductResult(
                 product,
-                (await CompanyRepository.FindCompanyByIdAsync(product.MakerCompanyId)).SingleOrDefault(),
-                (await CompanyRepository.FindCompanyByIdAsync(product.PublisherCompanyId)).SingleOrDefault(),
+                (await CompaniesRepository.FindCompanyByIdAsync(product.MakerCompanyId)).SingleOrDefault(),
+                (await CompaniesRepository.FindCompanyByIdAsync(product.PublisherCompanyId)).SingleOrDefault(),
                 (await ProductsRepository.FindProductTextureByProductIdAsync(product.ProductId)).AsList(),
                 (await ProductsRepository.FindProductTasteByProductIdAsync(product.ProductId)).AsList()
             );
