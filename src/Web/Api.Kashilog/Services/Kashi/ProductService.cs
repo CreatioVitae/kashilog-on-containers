@@ -32,7 +32,7 @@ public class ProductService : IService {
 
         static IEnumerable<int> GetReferencedCompanyIds(List<Product> allProducts) => allProducts.Select(m => m.MakerCompanyId).AsEnumerable().Union(allProducts.Select(m => m.PublisherCompanyId).AsEnumerable());
 
-        var referencedCompanies = (await CompanyRepository.FindCompanyInIdsAsync(GetReferencedCompanyIds(allProducts).Distinct())).AsList();
+        var referencedCompanies = (await CompanyRepository.FindCompaniesInIdsAsync(GetReferencedCompanyIds(allProducts).Distinct())).AsList();
 
         return allProducts.Select(product =>
             new ProductResult(
@@ -59,7 +59,7 @@ public class ProductService : IService {
 
         static IEnumerable<int> GetReferencedCompanyIds(List<Product> allProducts) => allProducts.Select(m => m.MakerCompanyId).AsEnumerable().Union(allProducts.Select(m => m.PublisherCompanyId).AsEnumerable());
 
-        var referencedCompanies = (await CompanyRepository.FindCompanyInIdsAsync(GetReferencedCompanyIds(allProducts).Distinct())).AsList();
+        var referencedCompanies = (await CompanyRepository.FindCompaniesInIdsAsync(GetReferencedCompanyIds(allProducts).Distinct())).AsList();
 
         foreach (var product in allProducts) {
             yield return new ProductResult(
