@@ -26,7 +26,7 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
             UnitPrice = 278.0000M,
             Amount = 9.00M,
             AmountType = AmountType.Pack,
-            Description = @"軽快な食感に焼き上げたプレッツェルにコクのあるチョコレートをコーティング。\r\nポキッとした心地よい食感のポッキーは、楽しさいっぱいの弾むおいしさです。",
+            Description = $@"軽快な食感に焼き上げたプレッツェルにコクのあるチョコレートをコーティング。{Environment.NewLine}ポキッとした心地よい食感のポッキーは、楽しさいっぱいの弾むおいしさです。",
             MakerCompanyId = 1,
             PublisherCompanyId = 1
         };
