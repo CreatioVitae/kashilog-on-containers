@@ -45,6 +45,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Constraints", "Constraints"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.Constraints.Kashilog", "src\Domain\Repositories\Constraints\Kashilog\Repository.Constraints.Kashilog.csproj", "{AE264C18-B086-4F9C-9A93-401B2002DCDD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{E4684272-F530-4229-8F65-7F53B7DC7BC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Kashilog.Tests", "tests\Repositories\Repository.Kashilog.Tests\Repository.Kashilog.Tests.csproj", "{BC51EAEA-D0DF-418B-AE36-23C314240C89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +87,10 @@ Global
 		{AE264C18-B086-4F9C-9A93-401B2002DCDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE264C18-B086-4F9C-9A93-401B2002DCDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE264C18-B086-4F9C-9A93-401B2002DCDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC51EAEA-D0DF-418B-AE36-23C314240C89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC51EAEA-D0DF-418B-AE36-23C314240C89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC51EAEA-D0DF-418B-AE36-23C314240C89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC51EAEA-D0DF-418B-AE36-23C314240C89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +110,8 @@ Global
 		{E0F34D14-5BFD-449E-83D9-A39D42CA2BA6} = {AEC8F4C8-C6A7-4A1A-AD29-213F2B8B6C8F}
 		{653DC62C-A303-40E7-8633-EF07CC818C52} = {50076B63-F2B4-4795-85E0-B8C8B0C1AE7C}
 		{AE264C18-B086-4F9C-9A93-401B2002DCDD} = {653DC62C-A303-40E7-8633-EF07CC818C52}
+		{E4684272-F530-4229-8F65-7F53B7DC7BC8} = {19695C48-DCAB-4DD8-A302-21FD78CDDA31}
+		{BC51EAEA-D0DF-418B-AE36-23C314240C89} = {E4684272-F530-4229-8F65-7F53B7DC7BC8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C5CFAEE9-EDD0-472C-B118-B988CC86BD3D}

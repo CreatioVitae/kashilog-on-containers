@@ -31,6 +31,7 @@ COPY /dacpacs/KashiLogDB.dacpac /tmp/kashilogdb.dacpac
 # SQLServerをバックグラウンド実行し、開始したことを確認できたことを保証するためのコマンド
 RUN ( /opt/mssql/bin/sqlservr --accept-eula & ) | grep -q "Service Broker manager has started" \
     && /opt/sqlpackage/sqlpackage /a:Publish /tsn:localhost /tec:False /tdn:KashiLogDB /tu:sa /tp:h0geFuga /sf:/tmp/kashilogdb.dacpac \
-    && /opt/sqlpackage/sqlpackage /a:Publish /tsn:localhost /tec:False /tdn:KashiLogDBTest /tu:sa /tp:h0geFuga /sf:/tmp/kashilogdb.dacpac \
+    && /opt/sqlpackage/sqlpackage /a:Publish /tsn:localhost /tec:False /tdn:KashiLogDBApiTest /tu:sa /tp:h0geFuga /sf:/tmp/kashilogdb.dacpac \
+    && /opt/sqlpackage/sqlpackage /a:Publish /tsn:localhost /tec:False /tdn:KashiLogDBRepositoryTest /tu:sa /tp:h0geFuga /sf:/tmp/kashilogdb.dacpac \
     && rm /tmp/kashilogdb.dacpac \
     && pkill sqlservr
