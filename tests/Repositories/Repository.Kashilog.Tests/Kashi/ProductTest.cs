@@ -42,6 +42,8 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
         Assert.Equal(expected.MiddleCategory, product.MiddleCategory);
         Assert.Equal(expected.SmallCategory, product.SmallCategory);
         Assert.Equal(expected.UnitPrice, product.UnitPrice);
+        Assert.Equal(expected.Amount, product.Amount);
+
 
         //Assert.Equal(
         //    new () {
