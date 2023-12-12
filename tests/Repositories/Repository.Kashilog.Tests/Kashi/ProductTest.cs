@@ -37,6 +37,8 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
         Assert.Equal(expected.ProductId, product.ProductId);
         Assert.Equal(expected.ProductRevision, product.ProductRevision);
         Assert.Equal(expected.ValidBeginDateTime, product.ValidBeginDateTime);
+        Assert.Equal(expected.ValidEndDateTime, product.ValidEndDateTime);
+
 
         //Assert.Equal(
         //    new () {
