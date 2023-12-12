@@ -2,7 +2,7 @@ using DomainObject.Kashilog.ConstantValues.Kashi;
 using System;
 
 namespace DomainObject.Kashilog.Kashi.Entities;
-public class Product {
+public record Product {
     public int ProductId { get; set; }
 
     public int ProductRevision { get; set; }
