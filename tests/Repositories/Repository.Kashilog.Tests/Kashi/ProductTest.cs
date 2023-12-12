@@ -14,7 +14,6 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
         var repository = new ProductsRepository(sqlManager);
         var product = await repository.FindProductByIdAsync(1);
 
-
         var expected = new Product() {
             ProductId = 1,
             ProductRevision = 1,
@@ -42,6 +41,7 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
         Assert.Equal(expected.LargeCategory, product.LargeCategory);
         Assert.Equal(expected.MiddleCategory, product.MiddleCategory);
         Assert.Equal(expected.SmallCategory, product.SmallCategory);
+        Assert.Equal(expected.UnitPrice, product.UnitPrice);
 
         //Assert.Equal(
         //    new () {
