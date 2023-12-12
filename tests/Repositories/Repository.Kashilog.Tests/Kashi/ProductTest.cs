@@ -23,7 +23,7 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
                 LargeCategory = LargeCategory.TheWestConfectionery,
                 MiddleCategory = MiddleCategory.Chocolate,
                 SmallCategory = SmallCategory.QuasiChocolate,
-                UnitPrice = 278.00M,
+                UnitPrice = 278.0000M,
                 Amount = 9.00M,
                 AmountType = AmountType.Pack,
                 Description = "軽快な食感に焼き上げたプレッツェルにコクのあるチョコレートをコーティング。\r\nポキッとした心地よい食感のポッキーは、楽しさいっぱいの弾むおいしさです。",
