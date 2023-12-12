@@ -11,7 +11,7 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
         await using var sqlManager = TestContext.GetSqlManager();
 
         var repository = new ProductsRepository(sqlManager);
-        var products = await repository.FindProductByIdAsync(1);
+        var product = await repository.FindProductByIdAsync(1);
 
         Assert.Equal(
             new () {
@@ -30,7 +30,7 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
                 MakerCompanyId = 1,
                 PublisherCompanyId = 1
             },
-            products);
+            product);
     }
 
     public void Dispose() =>
