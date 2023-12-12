@@ -1,5 +1,4 @@
 using DomainObject.Kashilog.ConstantValues.Kashi;
-using DomainObject.Kashilog.Kashi.Entities;
 using Repository.Kashilog.Kashi;
 using Repository.Kashilog.Tests.TestContexts;
 
