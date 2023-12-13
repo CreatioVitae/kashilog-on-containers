@@ -1,3 +1,4 @@
+using DomainObject.Kashilog.Contexts;
 using DomainObject.Kashilog.Kashi.Entities;
 using DomainObject.Kashilog.Kashi.QueryResults;
 using Repository.Constraints.Kashilog.Enterprise;
@@ -6,10 +7,12 @@ using Service.Extensions.DependencyInjection.Markers;
 
 namespace Api.Kashilog.Services.Kashi;
 
-public class ProductService(IProductsRepository productsRepository, ICompaniesRepository companiesRepository) : IService {
+public class ProductService(IProductsRepository productsRepository, ICompaniesRepository companiesRepository, RequestContext requestContext) : IService {
     private IProductsRepository ProductsRepository { get; } = productsRepository;
 
     private ICompaniesRepository CompaniesRepository { get; } = companiesRepository;
+
+    private RequestContext RequestContext { get; } = requestContext;
 
     public async ValueTask<IEnumerable<ProductResult>?> GetAllProductsAsync() {
         var allProducts = (await ProductsRepository.FindAllProductAsync()).AsList();

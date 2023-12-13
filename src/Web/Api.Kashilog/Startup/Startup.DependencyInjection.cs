@@ -1,3 +1,4 @@
+using DomainObject.Kashilog.Contexts;
 using Repository.Kashilog;
 
 // ReSharper disable once CheckNamespace
@@ -5,17 +6,15 @@ namespace Api.Kashilog;
 
 public static class StartupExtensionLibrary {
     internal static IServiceCollection ConfigureDependencyInjection(this IServiceCollection services, IConfiguration configuration) {
-        //SqlManager<TDatabaseConnection>
+       
         services
-            .AddScopedServicesFromKashilogRepository(configuration, DefaultWebEnvironment.WebApps);
-
-        //Services,Repositories
-        services.AddDefaultScopedServices(Assembly.GetExecutingAssembly().GetTypes());
-
-        // HttpClientFactory
-
-        //Logger.
+            .AddScopedServicesFromKashilogRepository(configuration, DefaultWebEnvironment.WebApps)
+            .AddScopedServicesFromKashilogWebApi()
+            .AddRequestContext<RequestContext>(configuration.GetAvailableValueByKey($"requestContextSettings:timezoneId"));
 
         return services;
     }
+
+    internal static IServiceCollection AddScopedServicesFromKashilogWebApi(this IServiceCollection services) =>
+        services.AddDefaultScopedServices(Assembly.GetExecutingAssembly().GetTypes());
 }
