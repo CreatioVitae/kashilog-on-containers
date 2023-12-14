@@ -3,11 +3,11 @@ using DomainObject.Kashilog.Kashi.Entities;
 using DomainObject.Kashilog.Kashi.QueryResults;
 using Repository.Constraints.Kashilog.Enterprise;
 using Repository.Constraints.Kashilog.Kashi;
-using Service.Extensions.DependencyInjection.Markers;
+using Service.Constraints.Kashilog.Kashi;
 
-namespace Api.Kashilog.Services.Kashi;
+namespace Service.Kashilog.Kashi;
 
-public class ProductService(IProductsRepository productsRepository, ICompaniesRepository companiesRepository, RequestContext requestContext) : IService {
+public class ProductService(IProductsRepository productsRepository, ICompaniesRepository companiesRepository, RequestContext requestContext) : IService, IProductService {
     private IProductsRepository ProductsRepository { get; } = productsRepository;
 
     private ICompaniesRepository CompaniesRepository { get; } = companiesRepository;

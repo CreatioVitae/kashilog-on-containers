@@ -47,7 +47,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.Constraints.Kash
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{E4684272-F530-4229-8F65-7F53B7DC7BC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Kashilog.Tests", "tests\Repositories\Repository.Kashilog.Tests\Repository.Kashilog.Tests.csproj", "{BC51EAEA-D0DF-418B-AE36-23C314240C89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.Kashilog.Tests", "tests\Repositories\Repository.Kashilog.Tests\Repository.Kashilog.Tests.csproj", "{BC51EAEA-D0DF-418B-AE36-23C314240C89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Constraints", "Constraints", "{96A32516-DC26-4B39-8FFE-B444EA0E9F32}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Kashilog", "src\Domain\Services\Kashilog\Service.Kashilog.csproj", "{5D5C67ED-BD02-4335-83D7-C8AA72006CE6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Constraints.Kashilog", "src\Domain\Services\Constraints\Kashilog\Service.Constraints.Kashilog.csproj", "{37E948D0-678A-4AB9-8E38-AC937E1DC616}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +97,14 @@ Global
 		{BC51EAEA-D0DF-418B-AE36-23C314240C89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC51EAEA-D0DF-418B-AE36-23C314240C89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC51EAEA-D0DF-418B-AE36-23C314240C89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D5C67ED-BD02-4335-83D7-C8AA72006CE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D5C67ED-BD02-4335-83D7-C8AA72006CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D5C67ED-BD02-4335-83D7-C8AA72006CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D5C67ED-BD02-4335-83D7-C8AA72006CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37E948D0-678A-4AB9-8E38-AC937E1DC616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37E948D0-678A-4AB9-8E38-AC937E1DC616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37E948D0-678A-4AB9-8E38-AC937E1DC616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37E948D0-678A-4AB9-8E38-AC937E1DC616}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +126,9 @@ Global
 		{AE264C18-B086-4F9C-9A93-401B2002DCDD} = {653DC62C-A303-40E7-8633-EF07CC818C52}
 		{E4684272-F530-4229-8F65-7F53B7DC7BC8} = {19695C48-DCAB-4DD8-A302-21FD78CDDA31}
 		{BC51EAEA-D0DF-418B-AE36-23C314240C89} = {E4684272-F530-4229-8F65-7F53B7DC7BC8}
+		{96A32516-DC26-4B39-8FFE-B444EA0E9F32} = {CDAF52E1-41C5-4ACC-9AE8-2C823EF4C8A5}
+		{5D5C67ED-BD02-4335-83D7-C8AA72006CE6} = {CDAF52E1-41C5-4ACC-9AE8-2C823EF4C8A5}
+		{37E948D0-678A-4AB9-8E38-AC937E1DC616} = {96A32516-DC26-4B39-8FFE-B444EA0E9F32}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C5CFAEE9-EDD0-472C-B118-B988CC86BD3D}
