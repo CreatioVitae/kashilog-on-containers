@@ -14,7 +14,7 @@
       "useSSL": true,
       "sslPort": 44570
     },
-    "WebApi.Kashilog": {
+    "Api.Kashilog": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
