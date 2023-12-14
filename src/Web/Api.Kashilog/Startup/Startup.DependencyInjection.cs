@@ -9,6 +9,7 @@ public static class StartupExtensionLibrary {
        
         services
             .AddScopedServicesFromKashilogRepository(configuration, DefaultWebEnvironment.WebApps)
+            .AddScopedServicesFromKashilogService()
             .AddScopedServicesFromKashilogWebApi()
             .AddRequestContext<RequestContext>(configuration.GetAvailableValueByKey($"requestContextSettings:timezoneId"));
 

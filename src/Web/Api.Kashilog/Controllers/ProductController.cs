@@ -1,14 +1,14 @@
-using Api.Kashilog.Services.Kashi;
 using DomainObject.Kashilog.Kashi.QueryResults;
+using Service.Constraints.Kashilog.Kashi;
 
-namespace Api.Kashilog.Controllers; 
+namespace Api.Kashilog.Controllers;
 
 [ApiController]
 [Route("product")]
-public class ProductController(ProductService productService) : ControllerBase
+public class ProductController(IProductService productService) : ControllerBase
 {
 
-    private ProductService ProductService { get; } = productService;
+    private IProductService ProductService { get; } = productService;
 
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<ProductResult>), 200)]
