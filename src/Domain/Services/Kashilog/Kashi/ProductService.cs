@@ -1,3 +1,4 @@
+using Database.Kashilog.DbContexts;
 using DomainObject.Kashilog.Contexts;
 using DomainObject.Kashilog.Kashi.Entities;
 using DomainObject.Kashilog.Kashi.QueryResults;
@@ -7,12 +8,14 @@ using Service.Constraints.Kashilog.Kashi;
 
 namespace Service.Kashilog.Kashi;
 
-public class ProductService(IProductsRepository productsRepository, ICompaniesRepository companiesRepository, RequestContext requestContext) : IService, IProductService {
+public class ProductService(IProductsRepository productsRepository, ICompaniesRepository companiesRepository, RequestContext requestContext, SqlManager<KashilogContext> sqlManager) : IService, IProductService {
     private IProductsRepository ProductsRepository { get; } = productsRepository;
 
     private ICompaniesRepository CompaniesRepository { get; } = companiesRepository;
 
     private RequestContext RequestContext { get; } = requestContext;
+
+    private SqlManager<KashilogContext> SqlManager { get; } = sqlManager;
 
     public async ValueTask<IEnumerable<ProductResult>?> GetAllProductsAsync() {
         var allProducts = (await ProductsRepository.FindAllProductAsync()).AsList();
@@ -27,7 +30,8 @@ public class ProductService(IProductsRepository productsRepository, ICompaniesRe
 
         var referencedProductTastes = await ProductsRepository.FindProductTasteInProductIdsAsync(allProductId);
 
-        static IEnumerable<int> GetReferencedCompanyIds(List<Product> allProducts) => allProducts.Select(m => m.MakerCompanyId).AsEnumerable().Union(allProducts.Select(m => m.PublisherCompanyId).AsEnumerable());
+        static IEnumerable<int> GetReferencedCompanyIds(List<Product> allProducts) =>
+            allProducts.Select(m => m.MakerCompanyId).AsEnumerable().Union(allProducts.Select(m => m.PublisherCompanyId).AsEnumerable());
 
         var referencedCompanies = (await CompaniesRepository.FindCompaniesInIdsAsync(GetReferencedCompanyIds(allProducts).Distinct())).AsList();
 
@@ -83,4 +87,41 @@ public class ProductService(IProductsRepository productsRepository, ICompaniesRe
                 (await ProductsRepository.FindProductTasteByProductIdAsync(product.ProductId)).AsList()
             );
     }
+
+    //public async ValueTask<ProductResult?> CreateProductAsync(ProductCreateParameters parameters) {
+    //    await using var transaction = await SqlManager.BeginScopedTransactionAsync();
+
+    //    var productEntity = new MstProduct();
+
+    //    SqlManager.DbContext.MstProducts.AddAsync(new(){ })
+
+    //    //var product = new Product(
+    //    //               parameters.ProductName,
+    //    //                          parameters.LargeCategory,
+    //    //                          parameters.MiddleCategory,
+    //    //                          parameters.SmallCategory,
+    //    //                          parameters.UnitPrice,
+    //    //                          parameters.Amount,
+    //    //                          parameters.AmountType,
+    //    //                          parameters.Description,
+    //    //                          parameters.MakerCompanyId,
+    //    //                          parameters.PublisherCompanyId,
+    //    //                          parameters.ValidBeginDateTime,
+    //    //                          parameters.ValidEndDateTime,
+    //    //                          parameters.ProductRevision,
+    //    //                          parameters.ProductId
+    //    //                      );
+
+    //    //var createdProduct = await ProductsRepository.CreateProductAsync(product);
+
+    //    //return createdProduct == null
+    //    //    ? null
+    //    //    : new ProductResult(
+    //    //                       createdProduct,
+    //    //                                      (await CompaniesRepository.FindCompanyByIdAsync(createdProduct.MakerCompanyId)).SingleOrDefault(),
+    //    //                                      (await CompaniesRepository.FindCompanyByIdAsync(createdProduct.PublisherCompanyId)).SingleOrDefault(),
+    //    //                                      (await ProductsRepository.FindProductTextureByProductIdAsync(createdProduct.ProductId)).AsList(),
+    //    //                                      (await ProductsRepository.FindProductTasteByProductIdAsync(createdProduct.ProductId)).AsList()
+    //    //                                  );
+    //}
 }

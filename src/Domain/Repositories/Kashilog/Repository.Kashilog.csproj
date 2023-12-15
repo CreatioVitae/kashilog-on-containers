@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Infrastructure\Databases\Kashilog\Database.Kashilog.csproj\Database.Kashilog.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructure\Databases\Kashilog\Database.Kashilog.csproj" />
     <ProjectReference Include="..\..\DomainObjects\Kashilog\DomainObject.Kashilog.csproj" />
     <ProjectReference Include="..\Constraints\Kashilog\Repository.Constraints.Kashilog.csproj" />
   </ItemGroup>

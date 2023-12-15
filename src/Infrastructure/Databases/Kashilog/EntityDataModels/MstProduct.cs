@@ -41,6 +41,8 @@ public partial class MstProduct
 
     public int LastUpdatedSign { get; set; }
 
+    public byte[] Revision { get; set; } = null!;
+
     public virtual CmnCompany MakerCompany { get; set; } = null!;
 
     public virtual CmnCompany PublisherCompany { get; set; } = null!;
