@@ -37,6 +37,5 @@
     <ProjectReference Include="..\..\Domain\Repositories\Kashilog\Repository.Kashilog.csproj" />
     <ProjectReference Include="..\..\Domain\Services\Constraints\Kashilog\Service.Constraints.Kashilog.csproj" />
     <ProjectReference Include="..\..\Domain\Services\Kashilog\Service.Kashilog.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\Databases\Kashilog\Database.Kashilog.csproj\Database.Kashilog.csproj" />
   </ItemGroup>
 </Project>

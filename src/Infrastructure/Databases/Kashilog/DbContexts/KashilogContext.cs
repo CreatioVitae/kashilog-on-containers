@@ -44,7 +44,7 @@ public partial class KashilogContext : DbContext
 
         modelBuilder.Entity<CmnCompany>(entity =>
         {
-            entity.HasKey(e => e.CompanyId).HasName("PK__CmnCompa__2D971CAC0EE7BFDB");
+            entity.HasKey(e => e.CompanyId).HasName("PK__CmnCompa__2D971CACF549A970");
 
             entity.ToTable("CmnCompany", "enterprise");
 
@@ -193,7 +193,7 @@ public partial class KashilogContext : DbContext
 
         modelBuilder.Entity<MstProduct>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__MstProdu__B40CC6CD1053333E");
+            entity.HasKey(e => e.ProductId).HasName("PK__MstProdu__B40CC6CD70DFD9F8");
 
             entity.ToTable("MstProduct", "kashi");
 
@@ -201,6 +201,9 @@ public partial class KashilogContext : DbContext
             entity.Property(e => e.CreatedTimeStamp).HasColumnType("datetime");
             entity.Property(e => e.LastUpdatedTimeStamp).HasColumnType("datetime");
             entity.Property(e => e.ProductName).HasMaxLength(200);
+            entity.Property(e => e.Revision)
+                .IsRowVersion()
+                .IsConcurrencyToken();
             entity.Property(e => e.UnitPrice).HasColumnType("money");
             entity.Property(e => e.ValidBeginDateTime).HasColumnType("datetime");
             entity.Property(e => e.ValidEndDateTime).HasColumnType("datetime");
