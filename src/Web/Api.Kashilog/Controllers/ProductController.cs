@@ -1,5 +1,6 @@
 using DomainObject.Kashilog.Kashi.CommandParameters;
 using DomainObject.Kashilog.Kashi.QueryResults;
+using Microsoft.AspNetCore.Authorization;
 using Service.Constraints.Kashilog.Kashi;
 
 namespace Api.Kashilog.Controllers;
@@ -11,6 +12,7 @@ public class ProductController(IProductService productService) : ControllerBase
 
     private IProductService ProductService { get; } = productService;
 
+    [Authorize]
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<ProductResult>), 200)]
     [ProducesResponseType(404)]
