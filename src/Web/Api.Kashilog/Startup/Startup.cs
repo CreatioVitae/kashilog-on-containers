@@ -1,4 +1,6 @@
 // ReSharper disable once CheckNamespace
+using Api.Kashilog.Authentications;
+
 namespace Api.Kashilog;
 public class Startup {
     public Startup(IConfiguration configuration) =>
@@ -12,6 +14,8 @@ public class Startup {
         services.ConfigureDependencyInjection(Configuration);
 
         services.AddDefaultSwaggerService(Configuration, Assembly.GetExecutingAssembly());
+
+        services.AddTokenAuthenticationService<TokenAuthenticationService>(Configuration);
 
         services.CreateDefaultBuilder();
     }

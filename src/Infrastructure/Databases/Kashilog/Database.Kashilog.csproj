@@ -22,9 +22,4 @@
     </PackageReference>
     <PackageReference Include="ORMIntegrator.Extensions.DependencyInjection.SqlServer" Version="0.10.1.1" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="EntityDataModels\" />
-  </ItemGroup>
-
 </Project>
