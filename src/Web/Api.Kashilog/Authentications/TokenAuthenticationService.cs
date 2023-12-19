@@ -12,10 +12,10 @@ public class TokenAuthenticationService(RequestContext requestContext) : ITokenA
 
         return (
             authenticateResult: true,
-            authenticatedUserClaims: new[] {
-                new Claim(ClaimTypes.NameIdentifier, RequestContext.User.Id),
-                new Claim(ClaimTypes.Email, RequestContext.User.Email)
-            }
+            authenticatedUserClaims: [
+                new(ClaimTypes.NameIdentifier, RequestContext.User.Id),
+                new(ClaimTypes.Email, RequestContext.User.Email)
+            ]
         );
     }
 }
