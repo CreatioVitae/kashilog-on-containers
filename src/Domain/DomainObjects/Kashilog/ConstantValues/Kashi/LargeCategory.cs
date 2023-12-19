@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Frozen;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace DomainObject.Kashilog.ConstantValues.Kashi;
 public enum LargeCategory {
@@ -15,11 +15,11 @@ public readonly struct LargeCategoryDisplayValues {
 }
 
 public static class LargeCategoryExtensions {
-    static readonly ReadOnlyDictionary<LargeCategory, string> LargeCategoryToLargeCategoryDisplayValueDictionary = new(
-        new Dictionary<LargeCategory, string>{
+    static readonly FrozenDictionary<LargeCategory, string> LargeCategoryToLargeCategoryDisplayValueDictionary =
+        new Dictionary<LargeCategory, string> {
             {LargeCategory.TheWestConfectionery, LargeCategoryDisplayValues.TheWestConfectionery },
             {LargeCategory.JapaneseConfectionery, LargeCategoryDisplayValues.JapaneseConfectionery}
-        });
+        }.ToFrozenDictionary();
 
     public static string GetDisplayValue(this LargeCategory largeCategory) =>
         LargeCategoryToLargeCategoryDisplayValueDictionary.GetValueOrDefault(largeCategory)

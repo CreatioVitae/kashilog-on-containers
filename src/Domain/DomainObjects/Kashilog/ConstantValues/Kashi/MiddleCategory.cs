@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Frozen;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace DomainObject.Kashilog.ConstantValues.Kashi;
 public enum MiddleCategory {
@@ -28,8 +28,8 @@ public readonly struct MiddleCategoryDisplayValues {
 }
 
 public static class MiddleCategoryExtensions {
-    static readonly ReadOnlyDictionary<MiddleCategory, string> MiddleCategoryToMiddleCategoryDisplayValueDictionary = new(
-        new Dictionary<MiddleCategory, string>{
+    static readonly FrozenDictionary<MiddleCategory, string> MiddleCategoryToMiddleCategoryDisplayValueDictionary =
+        new Dictionary<MiddleCategory, string> {
             { MiddleCategory.Snack, MiddleCategoryDisplayValues.Snack },
             { MiddleCategory.Biscuit, MiddleCategoryDisplayValues.Biscuit },
             { MiddleCategory.ChewingGum, MiddleCategoryDisplayValues.ChewingGum },
@@ -39,7 +39,7 @@ public static class MiddleCategoryExtensions {
             { MiddleCategory.Waffle, MiddleCategoryDisplayValues.Waffle },
             { MiddleCategory.Beans, MiddleCategoryDisplayValues.Beans },
             { MiddleCategory.Rice, MiddleCategoryDisplayValues.Rice }
-        });
+        }.ToFrozenDictionary();
 
     public static string GetDisplayValue(this MiddleCategory middleCategory) =>
         MiddleCategoryToMiddleCategoryDisplayValueDictionary.GetValueOrDefault(middleCategory)

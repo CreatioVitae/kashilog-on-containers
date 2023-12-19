@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Frozen;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace DomainObject.Kashilog.ConstantValues.Kashi;
 public enum AmountType {
@@ -21,13 +21,13 @@ public readonly struct AmountTypeDisplayValues {
 }
 
 public static class AmountTypeExtensions {
-    static readonly ReadOnlyDictionary<AmountType, string> AmountTypeToAmountTypeDisplayValueDictionary = new(
-        new Dictionary<AmountType, string>{
-            {AmountType.Gram, AmountTypeDisplayValues.Gram },
-            {AmountType.Sheet, AmountTypeDisplayValues.Sheet},
-            {AmountType.Pack, AmountTypeDisplayValues.Pack},
-            {AmountType.Grain, AmountTypeDisplayValues.Grain}
-        });
+    static readonly FrozenDictionary<AmountType, string> AmountTypeToAmountTypeDisplayValueDictionary =
+        new Dictionary<AmountType, string> {
+            { AmountType.Gram, AmountTypeDisplayValues.Gram },
+            { AmountType.Sheet, AmountTypeDisplayValues.Sheet },
+            { AmountType.Pack, AmountTypeDisplayValues.Pack },
+            { AmountType.Grain, AmountTypeDisplayValues.Grain }
+        }.ToFrozenDictionary();
 
     public static string GetDisplayValue(this AmountType amountType) =>
         AmountTypeToAmountTypeDisplayValueDictionary.GetValueOrDefault(amountType)

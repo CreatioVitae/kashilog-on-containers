@@ -1,8 +1,8 @@
 using System;
+using System.Collections.Frozen;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
-namespace DomainObject.Kashilog.ConstantValues.Kashi; 
+namespace DomainObject.Kashilog.ConstantValues.Kashi;
 
 public enum SmallCategory {
     PotatoChips = 1,
@@ -23,16 +23,15 @@ public readonly struct SmallCategoryDisplayValues {
 }
 
 public static class SmallCategoryExtensions {
-    static readonly ReadOnlyDictionary<SmallCategory, string> SmallCategoryToSmallCategoryDisplayValueDictionary = new(
-        new Dictionary<SmallCategory, string>
-        {
+    static readonly FrozenDictionary<SmallCategory, string> SmallCategoryToSmallCategoryDisplayValueDictionary =
+        new Dictionary<SmallCategory, string> {
             { SmallCategory.PotatoChips, SmallCategoryDisplayValues.PotatoChips },
             { SmallCategory.Brezel, SmallCategoryDisplayValues.Brezel },
             { SmallCategory.QuasiChocolate, SmallCategoryDisplayValues.QuasiChocolate },
             { SmallCategory.Chocolate, SmallCategoryDisplayValues.Chocolate },
             { SmallCategory.RiceCracker, SmallCategoryDisplayValues.RiceCracker },
             { SmallCategory.Candy, SmallCategoryDisplayValues.Candy }
-        });
+        }.ToFrozenDictionary();
 
     public static string GetDisplayValue(this SmallCategory smallCategory) =>
         SmallCategoryToSmallCategoryDisplayValueDictionary.GetValueOrDefault(smallCategory)
