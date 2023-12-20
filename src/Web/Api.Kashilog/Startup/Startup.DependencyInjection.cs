@@ -6,7 +6,7 @@ namespace Api.Kashilog;
 
 public static class StartupExtensionLibrary {
     internal static IServiceCollection ConfigureDependencyInjection(this IServiceCollection services, IConfiguration configuration) {
-       
+
         services
             .AddScopedServicesFromKashilogRepository(configuration, DefaultWebEnvironment.WebApps)
             .AddScopedServicesFromKashilogService()

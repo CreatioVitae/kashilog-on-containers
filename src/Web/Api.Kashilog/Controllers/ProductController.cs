@@ -1,4 +1,3 @@
-using DomainObject.Kashilog.Kashi.CommandParameters;
 using DomainObject.Kashilog.Kashi.QueryResults;
 using Microsoft.AspNetCore.Authorization;
 using Service.Constraints.Kashilog.Kashi;
@@ -7,8 +6,7 @@ namespace Api.Kashilog.Controllers;
 
 [ApiController]
 [Route("product")]
-public class ProductController(IProductService productService) : ControllerBase
-{
+public class ProductController(IProductService productService) : ControllerBase {
 
     private IProductService ProductService { get; } = productService;
 
@@ -27,7 +25,7 @@ public class ProductController(IProductService productService) : ControllerBase
     [ProducesResponseType(typeof(ProductResult), 200)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async ValueTask<ActionResult> GetProductAsync([FromRoute]int productId) =>
+    public async ValueTask<ActionResult> GetProductAsync([FromRoute] int productId) =>
         this.CreateHttpGetResult(await ProductService.GetProductByIdAsync(productId));
 
     //public async ValueTask<ActionResult> CreateProductAsync([FromBody] ProductCreateParameters parameters) {

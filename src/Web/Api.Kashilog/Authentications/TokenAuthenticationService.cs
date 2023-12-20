@@ -8,7 +8,7 @@ public class TokenAuthenticationService(RequestContext requestContext) : ITokenA
 
     public async ValueTask<(bool authenticateResult, Claim[] authenticatedUserClaims)> AuthenticateAsync(string token) {
 
-        RequestContext.User = new (){ Id = "hoge", Email = "hoge@example.com" };
+        RequestContext.User = new() { Id = "hoge", Email = "hoge@example.com" };
 
         return (
             authenticateResult: true,
