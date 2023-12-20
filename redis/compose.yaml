@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  members-cache:
+    container_name: kashilog_Redis
+    image: redis:5
+    ports:
+      - "6492:6379"
+    volumes:
+      - kashilog-cache:/data/kashilog
+
+volumes:
+  kashilog-cache:
