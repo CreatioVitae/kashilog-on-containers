@@ -246,7 +246,7 @@
             "nullable": true
           }
         },
-        "additionalProperties": {}
+        "additionalProperties": { }
       },
       "ProductResult": {
         "type": "object",
@@ -374,7 +374,7 @@
   },
   "security": [
     {
-      "bearer": []
+      "bearer": [ ]
     }
   ]
 }

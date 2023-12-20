@@ -1,5 +1,7 @@
 # kashilog-on-containers
 
+`dotnet build -c Release --property:AutoSwaggerToFile=true`
+
 ## using EF Core Tools
 この項では、EF Coreでのリバースエンジニアリングを行う方法を説明する。
 ### EF Core ToolsのUpdate

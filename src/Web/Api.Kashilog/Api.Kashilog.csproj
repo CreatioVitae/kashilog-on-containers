@@ -35,6 +35,10 @@
 
   <Target Name="SwaggerToFile" AfterTargets="AfterBuild" Condition="'$(AutoSwaggerToFile)' == 'true'">
     <Exec Command="dotnet tool restore" />
-    <Exec Command="dotnet swagger tofile --output swagger.json $(OutputPath)$(AssemblyName).dll api-points" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" />
+    <Exec Command="dotnet swagger tofile --output swagger.json $(OutputPath)$(AssemblyName).dll kashilog" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" />
   </Target>
+
+  <ItemGroup>
+    <Content Remove="swagger.json" />
+  </ItemGroup>
 </Project>
