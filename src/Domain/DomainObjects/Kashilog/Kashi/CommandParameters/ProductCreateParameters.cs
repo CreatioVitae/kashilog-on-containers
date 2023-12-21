@@ -1,33 +1,43 @@
 using DomainObject.Kashilog.ConstantValues.Kashi;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DomainObject.Kashilog.Kashi.CommandParameters;
 public record ProductCreateParameters {
-    public int ProductId { get; set; }
+    [Required]
+    public DateTime ValidBeginDateTime { get; init; }
 
-    public int ProductRevision { get; set; }
+    [Required]
+    public DateTime ValidEndDateTime { get; init; }
 
-    public DateTime ValidBeginDateTime { get; set; }
+    [Required]
+    [Length(ProductsConstraintValues.ProductName.MinimumLength, maximumLength: ProductsConstraintValues.ProductName.MaximumLength, ErrorMessage = ProductsConstraintValues.ProductName.LengthOutOfRangeErrorMessage)]
+    public required string ProductName { get; init; }
 
-    public DateTime ValidEndDateTime { get; set; }
+    [Required]
+    public LargeCategory LargeCategory { get; init; }
 
-    public string ProductName { get; set; } = default!;
+    [Required]
+    public MiddleCategory MiddleCategory { get; init; }
 
-    public LargeCategory LargeCategory { get; set; }
+    [Required]
+    public SmallCategory SmallCategory { get; init; }
 
-    public MiddleCategory MiddleCategory { get; set; }
+    [Required]
+    public decimal UnitPrice { get; init; }
 
-    public SmallCategory SmallCategory { get; set; }
+    [Required]
+    public decimal Amount { get; init; }
 
-    public decimal UnitPrice { get; set; }
+    [Required]
+    public AmountType AmountType { get; init; }
 
-    public decimal Amount { get; set; }
+    [Required]
+    public required string Description { get; init; }
 
-    public AmountType AmountType { get; set; }
+    [Required]
+    public int MakerCompanyId { get; init; }
 
-    public string Description { get; set; } = default!;
-
-    public int MakerCompanyId { get; set; }
-
-    public int PublisherCompanyId { get; set; }
+    [Required]
+    public int PublisherCompanyId { get; init; }
 }

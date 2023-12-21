@@ -1,6 +1,8 @@
 using DomainObject.Kashilog.ConstantValues.Kashi;
+using DomainObject.Kashilog.Kashi.CommandParameters;
 using Repository.Kashilog.Kashi;
 using Repository.Kashilog.Tests.TestContexts;
+using System.ComponentModel.DataAnnotations;
 
 namespace Repository.Kashilog.Tests.Kashi;
 public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposable, IClassFixture<RepositoryKashilogTestContext> {
@@ -31,6 +33,27 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
                 PublisherCompanyId = 1
             },
             actual);
+    }
+
+    [Fact(DisplayName = "ProductCreateParameters検証_商品名桁数範囲外")]
+    public void ProductCreateParametersValidationTest_CaseProductNameLengthOutOfRange() {
+        var createParam = new ProductCreateParameters() {
+            ValidBeginDateTime = new DateTime(2021, 1, 1),
+            ValidEndDateTime = new DateTime(2021, 12, 31),
+            ProductName = new string('a', ProductsConstraintValues.ProductName.MaximumLength + 1),
+            LargeCategory = LargeCategory.TheWestConfectionery,
+            MiddleCategory = MiddleCategory.Chocolate,
+            SmallCategory = SmallCategory.QuasiChocolate,
+            UnitPrice = 278.0000M,
+            Amount = 9.00M,
+            AmountType = AmountType.Pack,
+            Description = $"軽快な食感に焼き上げたプレッツェルにコクのあるチョコレートをコーティング。{Environment.NewLine}ポキッとした心地よい食感のポッキーは、楽しさいっぱいの弾むおいしさです。",
+            MakerCompanyId = 1,
+            PublisherCompanyId = 1
+        };
+
+        var e =  Assert.Throws<ValidationException>(() => ObjectValidator.ThrowIfInvalid(createParam));
+        Assert.Equal(ProductsConstraintValues.ProductName.LengthOutOfRangeErrorMessage, e.Message);
     }
 
     public void Dispose() =>
