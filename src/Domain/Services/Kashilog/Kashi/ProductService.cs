@@ -90,85 +90,32 @@ public class ProductService(IProductsRepository productsRepository, ICompaniesRe
             );
     }
 
-    //public async ValueTask<ProductResult?> CreateProductAsync(ProductCreateParameters parameters) {
-    //    await using var transaction = await SqlManager.BeginScopedTransactionAsync();
+    public async ValueTask CreateProductAsync(ProductCreateParameters parameters) {
+        await using var transaction = await SqlManager.BeginScopedTransactionAsync();
 
-        //var productEntity = new MstProduct() { };
+        var nextKey = (await ProductsRepository.FindProductCurrentKeyAsync())?.GetNextLineUp() ?? new(1, 1);
 
+        var newProduct = new MstProduct() {
+            ProductLineUpId = nextKey.ProductLineUpId,
+            ProductRevision = nextKey.ProductRevision,
+            ValidBeginDateTime = parameters.ValidBeginDateTime,
+            ValidEndDateTime = parameters.ValidEndDateTime,
+            ProductName = parameters.ProductName,
+            LargeCategory = (int)parameters.LargeCategory,
+            MiddleCategory = (int)parameters.MiddleCategory,
+            SmallCategory = (int)parameters.SmallCategory,
+            UnitPrice = parameters.UnitPrice,
+            Amount = parameters.Amount,
+            AmountType = (int)parameters.AmountType,
+            Description = parameters.Description,
+            MakerCompanyId = parameters.MakerCompanyId,
+            PublisherCompanyId = parameters.PublisherCompanyId,
+            CreatedTimeStamp = RequestContext.RequestedDatetime,
+            LastUpdatedTimeStamp = RequestContext.RequestedDatetime
+        };
 
+        await SqlManager.DbContext.MstProducts.AddAsync(newProduct);
 
-//    public int ProductId { get; set; }
-
-//    public int ProductLineUpId { get; set; }
-
-//    public int ProductRevision { get; set; }
-
-//    public DateTime ValidBeginDateTime { get; set; }
-
-//    public DateTime ValidEndDateTime { get; set; }
-
-//    public string ProductName { get; set; } = null!;
-
-//    public int LargeCategory { get; set; }
-
-//    public int MiddleCategory { get; set; }
-
-//    public int SmallCategory { get; set; }
-
-//    public decimal UnitPrice { get; set; }
-
-//    public decimal Amount { get; set; }
-
-//    public int AmountType { get; set; }
-
-//    public string Description { get; set; } = null!;
-
-//    public int MakerCompanyId { get; set; }
-
-//    public int PublisherCompanyId { get; set; }
-
-//    public DateTime CreatedTimeStamp { get; set; }
-
-//    public DateTime LastUpdatedTimeStamp { get; set; }
-
-//    public int LastUpdatedSign { get; set; }
-
-
-//}
-
-
-
-
-
-//SqlManager.DbContext.MstProducts.AddAsync(new() { })
-
-        //var product = new Product(
-        //               parameters.ProductName,
-        //                          parameters.LargeCategory,
-        //                          parameters.MiddleCategory,
-        //                          parameters.SmallCategory,
-        //                          parameters.UnitPrice,
-        //                          parameters.Amount,
-        //                          parameters.AmountType,
-        //                          parameters.Description,
-        //                          parameters.MakerCompanyId,
-        //                          parameters.PublisherCompanyId,
-        //                          parameters.ValidBeginDateTime,
-        //                          parameters.ValidEndDateTime,
-        //                          parameters.ProductRevision,
-        //                          parameters.ProductId
-        //                      );
-
-        //var createdProduct = await ProductsRepository.CreateProductAsync(product);
-
-        //return createdProduct == null
-        //    ? null
-        //    : new ProductResult(
-        //                       createdProduct,
-        //                                      (await CompaniesRepository.FindCompanyByIdAsync(createdProduct.MakerCompanyId)).SingleOrDefault(),
-        //                                      (await CompaniesRepository.FindCompanyByIdAsync(createdProduct.PublisherCompanyId)).SingleOrDefault(),
-        //                                      (await ProductsRepository.FindProductTextureByProductIdAsync(createdProduct.ProductId)).AsList(),
-        //                                      (await ProductsRepository.FindProductTasteByProductIdAsync(createdProduct.ProductId)).AsList()
-        //                                  );
-    //}
+        transaction.Complete();
+    }
 }
