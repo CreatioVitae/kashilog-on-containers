@@ -44,7 +44,7 @@ public partial class KashilogContext : DbContext
 
         modelBuilder.Entity<CmnCompany>(entity =>
         {
-            entity.HasKey(e => e.CompanyId).HasName("PK__CmnCompa__2D971CACF549A970");
+            entity.HasKey(e => e.CompanyId).HasName("PK__CmnCompa__2D971CACAE1654EE");
 
             entity.ToTable("CmnCompany", "enterprise");
 
@@ -193,9 +193,11 @@ public partial class KashilogContext : DbContext
 
         modelBuilder.Entity<MstProduct>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__MstProdu__B40CC6CD70DFD9F8");
+            entity.HasKey(e => e.ProductId).HasName("PK__MstProdu__B40CC6CDD0E57549");
 
             entity.ToTable("MstProduct", "kashi");
+
+            entity.HasIndex(e => new { e.ProductLineUpId, e.ProductRevision }, "UK_MstProduct").IsUnique();
 
             entity.Property(e => e.Amount).HasColumnType("numeric(5, 2)");
             entity.Property(e => e.CreatedTimeStamp).HasColumnType("datetime");

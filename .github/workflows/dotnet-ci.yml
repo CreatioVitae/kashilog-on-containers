@@ -9,7 +9,7 @@ jobs:
 
     services:
       mssql-kashilog:
-        image: ghcr.io/creatiovitae/kashilogdb:2023-12.15
+        image: ghcr.io/creatiovitae/kashilogdb:2023-12.21
         ports:
           - 1433/tcp
           - 1433:1433
