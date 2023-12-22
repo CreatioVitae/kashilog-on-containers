@@ -26,11 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\DomainObjects\Kashilog\DomainObject.Kashilog.csproj" />
-    <ProjectReference Include="..\..\Domain\Repositories\Constraints\Kashilog\Repository.Constraints.Kashilog.csproj" />
-    <ProjectReference Include="..\..\Domain\Repositories\Kashilog\Repository.Kashilog.csproj" />
-    <ProjectReference Include="..\..\Domain\Services\Constraints\Kashilog\Service.Constraints.Kashilog.csproj" />
-    <ProjectReference Include="..\..\Domain\Services\Kashilog\Service.Kashilog.csproj" />
+    <ProjectReference Include="..\..\..\Domain\DomainObjects\Kashilog\DomainObject.Kashilog.csproj" />
+    <ProjectReference Include="..\..\..\Domain\Repositories\Constraints\Kashilog\Repository.Constraints.Kashilog.csproj" />
+    <ProjectReference Include="..\..\..\Domain\Repositories\Kashilog\Repository.Kashilog.csproj" />
+    <ProjectReference Include="..\..\..\Domain\Services\Constraints\Kashilog\Service.Constraints.Kashilog.csproj" />
+    <ProjectReference Include="..\..\..\Domain\Services\Kashilog\Service.Kashilog.csproj" />
+    <ProjectReference Include="..\..\Web.Kashilog.Core\Web.Kashilog.Core.csproj" />
   </ItemGroup>
 
   <Target Name="SwaggerToFile" AfterTargets="AfterBuild" Condition="'$(AutoSwaggerToFile)' == 'true'">
