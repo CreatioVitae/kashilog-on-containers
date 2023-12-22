@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Web\Api.Kashilog\Api.Kashilog.csproj" />
+    <ProjectReference Include="..\..\src\Web\Apis\Kashilog\Api.Kashilog.csproj" />
   </ItemGroup>
 
   <ItemGroup>

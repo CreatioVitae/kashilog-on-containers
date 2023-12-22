@@ -1,10 +1,15 @@
-using Service.Extensions.DependencyInjection.Markers;
-using System;
+using DomainObject.Kashilog.Contexts.DomainIndicators;
 
 namespace DomainObject.Kashilog.Contexts;
 
 public class RequestContext : IRequestContext {
     public DateTime RequestedDatetime { get; init; }
+
+    public bool ForceExecuteOption { get; set; } = false;
+
+    public bool ForceDefaultExecutionDate { get; set; } = false;
+
+    public DomainIndicator? DomainIndicator { get; set; } = null;
 
     public AuthenticatedUser? User { get; set; }
 
