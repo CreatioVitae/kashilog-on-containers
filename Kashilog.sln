@@ -55,6 +55,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Constraints.Kashilo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database.Kashilog", "src\Infrastructure\Databases\Kashilog\Database.Kashilog.csproj", "{4D57CCEE-8570-4277-AA0E-C24775BEF80D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Caches", "Caches", "{E83CF347-15B0-4850-8845-2B4D8A2BBFEC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cache.Kashilog", "src\Domain\Caches\Kashilog\Cache.Kashilog.csproj", "{2FADC914-48BA-42D0-8F00-E890699DA91E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +109,10 @@ Global
 		{4D57CCEE-8570-4277-AA0E-C24775BEF80D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D57CCEE-8570-4277-AA0E-C24775BEF80D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D57CCEE-8570-4277-AA0E-C24775BEF80D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FADC914-48BA-42D0-8F00-E890699DA91E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FADC914-48BA-42D0-8F00-E890699DA91E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FADC914-48BA-42D0-8F00-E890699DA91E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FADC914-48BA-42D0-8F00-E890699DA91E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,6 +137,8 @@ Global
 		{5D5C67ED-BD02-4335-83D7-C8AA72006CE6} = {CDAF52E1-41C5-4ACC-9AE8-2C823EF4C8A5}
 		{37E948D0-678A-4AB9-8E38-AC937E1DC616} = {96A32516-DC26-4B39-8FFE-B444EA0E9F32}
 		{4D57CCEE-8570-4277-AA0E-C24775BEF80D} = {EB92F8FB-0F57-48D7-972E-E8632ACB47C6}
+		{E83CF347-15B0-4850-8845-2B4D8A2BBFEC} = {1D3E68B7-A2EB-42A3-AB1D-CF8D0C8924C3}
+		{2FADC914-48BA-42D0-8F00-E890699DA91E} = {E83CF347-15B0-4850-8845-2B4D8A2BBFEC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C5CFAEE9-EDD0-472C-B118-B988CC86BD3D}

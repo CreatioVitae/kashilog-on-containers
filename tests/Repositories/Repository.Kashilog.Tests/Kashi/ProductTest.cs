@@ -79,7 +79,6 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
         Assert.Equal($"{nameof(ProductCreateParameters.ValidBeginDateTime)}は{SqlDateTime.MinValue.Value}以上の値を設定してください。", e.Message);
     }
 
-
     [Fact(DisplayName = "ProductCreateParameters検証_適用終了日最小値未満")]
     public void ProductCreateParametersValidationTest_CaseValidEndDateTimeIsLessThanMinValue() {
         var createParam = new ProductCreateParameters() {

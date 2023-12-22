@@ -1,3 +1,4 @@
+using Cache.Members;
 using DomainObject.Kashilog.Contexts;
 using Repository.Kashilog;
 
@@ -9,6 +10,7 @@ public static class StartupExtensionLibrary {
 
         services
             .AddScopedServicesFromKashilogRepository(configuration, DefaultWebEnvironment.WebApps)
+            .AddScopedServicesFromKashilogCache(configuration.GetRedisSettings())
             .AddScopedServicesFromKashilogService()
             .AddScopedServicesFromKashilogWebApi()
             .AddRequestContext<RequestContext>(configuration.GetAvailableValueByKey($"requestContextSettings:timezoneId"));

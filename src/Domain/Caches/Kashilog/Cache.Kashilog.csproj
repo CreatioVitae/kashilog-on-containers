@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Service.Extensions.DependencyInjection" Version="1.10.1" />
+    <PackageReference Include="RedisServerWrapper.Extensions.DependencyInjection" Version="0.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DomainObjects\Kashilog\DomainObject.Kashilog.csproj" />
+  </ItemGroup>
+</Project>
