@@ -118,4 +118,17 @@ public class ProductsRepository(SqlManager<KashilogContext> sqlManager) : IRepos
             WHERE
                 ProductTexture.ProductId In @ProductIds
             """, new { ProductIds = productIds });
+
+    public Task<ProductCurrentKey?> FindProductCurrentKeyAsync() =>
+        KashilogSqlManager.SelectFirstOrDefaultAsync<ProductCurrentKey>($"""
+            SELECT
+                ProductLineUpId AS ProductLineUpId,
+                ProductRevision AS ProductRevision
+            FROM
+                kashi.MstProduct
+            WHERE
+                ProductLineUpId = (SELECT MAX(ProductLineUpId) FROM kashi.MstProduct)
+            ORDER BY
+                ProductRevision DESC
+            """);
 }

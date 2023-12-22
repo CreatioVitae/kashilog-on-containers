@@ -8,4 +8,5 @@ public interface IProductsRepository {
     Task<IEnumerable<ProductTaste>> FindProductTasteInProductIdsAsync(IEnumerable<int> productIds);
     Task<IEnumerable<ProductTexture>> FindProductTextureByProductIdAsync(int productId);
     Task<IEnumerable<ProductTexture>> FindProductTextureInProductIdsAsync(IEnumerable<int> productIds);
+    Task<ProductCurrentKey?> FindProductCurrentKeyAsync();
 }

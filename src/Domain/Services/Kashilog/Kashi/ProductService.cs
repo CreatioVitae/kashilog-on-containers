@@ -1,5 +1,7 @@
 using Database.Kashilog.DbContexts;
+using Database.Kashilog.EntityDataModels;
 using DomainObject.Kashilog.Contexts;
+using DomainObject.Kashilog.Kashi.CommandParameters;
 using DomainObject.Kashilog.Kashi.Entities;
 using DomainObject.Kashilog.Kashi.QueryResults;
 using Repository.Constraints.Kashilog.Enterprise;
@@ -88,40 +90,32 @@ public class ProductService(IProductsRepository productsRepository, ICompaniesRe
             );
     }
 
-    //public async ValueTask<ProductResult?> CreateProductAsync(ProductCreateParameters parameters) {
-    //    await using var transaction = await SqlManager.BeginScopedTransactionAsync();
+    public async ValueTask CreateProductAsync(ProductCreateParameters parameters) {
+        await using var transaction = await SqlManager.BeginScopedTransactionAsync();
 
-    //    var productEntity = new MstProduct();
+        var nextKey = (await ProductsRepository.FindProductCurrentKeyAsync())?.GetNextLineUp() ?? new(1, 1);
 
-    //    SqlManager.DbContext.MstProducts.AddAsync(new(){ })
+        var newProduct = new MstProduct() {
+            ProductLineUpId = nextKey.ProductLineUpId,
+            ProductRevision = nextKey.ProductRevision,
+            ValidBeginDateTime = parameters.ValidBeginDateTime,
+            ValidEndDateTime = parameters.ValidEndDateTime,
+            ProductName = parameters.ProductName,
+            LargeCategory = (int)parameters.LargeCategory,
+            MiddleCategory = (int)parameters.MiddleCategory,
+            SmallCategory = (int)parameters.SmallCategory,
+            UnitPrice = parameters.UnitPrice,
+            Amount = parameters.Amount,
+            AmountType = (int)parameters.AmountType,
+            Description = parameters.Description,
+            MakerCompanyId = parameters.MakerCompanyId,
+            PublisherCompanyId = parameters.PublisherCompanyId,
+            CreatedTimeStamp = RequestContext.RequestedDatetime,
+            LastUpdatedTimeStamp = RequestContext.RequestedDatetime
+        };
 
-    //    //var product = new Product(
-    //    //               parameters.ProductName,
-    //    //                          parameters.LargeCategory,
-    //    //                          parameters.MiddleCategory,
-    //    //                          parameters.SmallCategory,
-    //    //                          parameters.UnitPrice,
-    //    //                          parameters.Amount,
-    //    //                          parameters.AmountType,
-    //    //                          parameters.Description,
-    //    //                          parameters.MakerCompanyId,
-    //    //                          parameters.PublisherCompanyId,
-    //    //                          parameters.ValidBeginDateTime,
-    //    //                          parameters.ValidEndDateTime,
-    //    //                          parameters.ProductRevision,
-    //    //                          parameters.ProductId
-    //    //                      );
+        await SqlManager.DbContext.MstProducts.AddAsync(newProduct);
 
-    //    //var createdProduct = await ProductsRepository.CreateProductAsync(product);
-
-    //    //return createdProduct == null
-    //    //    ? null
-    //    //    : new ProductResult(
-    //    //                       createdProduct,
-    //    //                                      (await CompaniesRepository.FindCompanyByIdAsync(createdProduct.MakerCompanyId)).SingleOrDefault(),
-    //    //                                      (await CompaniesRepository.FindCompanyByIdAsync(createdProduct.PublisherCompanyId)).SingleOrDefault(),
-    //    //                                      (await ProductsRepository.FindProductTextureByProductIdAsync(createdProduct.ProductId)).AsList(),
-    //    //                                      (await ProductsRepository.FindProductTasteByProductIdAsync(createdProduct.ProductId)).AsList()
-    //    //                                  );
-    //}
+        transaction.Complete();
+    }
 }
