@@ -16,7 +16,7 @@ public class Startup {
 
         services.AddDefaultSwaggerService<OpenApiOperationBuildFilter>(Configuration, Assembly.GetExecutingAssembly());
 
-        services.AddTokenAuthenticationService<TokenAuthenticationService>(Configuration);
+        services.AddTokenAuthenticationService<TokenAuthenticationService, TokenAuthenticationInterceptor>(Configuration);
 
         services.CreateDefaultBuilder();
     }
