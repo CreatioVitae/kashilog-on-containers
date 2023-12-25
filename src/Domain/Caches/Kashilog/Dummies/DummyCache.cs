@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 namespace Cache.Kashilog.Dummies;
 
 public class DummyCache : ICache {
-    readonly (string cacheKey, int hoursOfCacheExpiry) _cacheSettings = ("members/dummies", 24);
+    readonly (string cacheKey, int hoursOfCacheExpiry) _cacheSettings = ("kashilog/dummies", 24);
 
     readonly RedisDictionary<string, Dummy> _cache;
 
