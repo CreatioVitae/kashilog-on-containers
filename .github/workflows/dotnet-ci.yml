@@ -30,6 +30,11 @@ jobs:
           --health-timeout 30s
           --health-start-period 20s
           --health-retries 3
+      transaction-mail-kashilog:
+        image: schickling/mailcatcher:latest
+        ports:
+          - "1025:1025"
+          - "1080:1080"
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
@@ -40,6 +45,19 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
+    - name: Ping transaction-mail-kashilog
+      run: |
+        for i in {1..5}; do
+          if curl --fail http://127.0.0.1:1080; then
+            break
+          fi
+          echo "transaction-mail-server is not responding, retrying..."
+          sleep 5
+          if [ $i -eq 5 ]; then
+            echo "transaction-mail-server failed to respond after 5 retries"
+            exit 1
+          fi
+        done
     - name: Test
       run: dotnet test --no-restore --verbosity normal
       env:

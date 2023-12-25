@@ -1,5 +1,38 @@
 # kashilog-on-containers
 
+## Technology Stacks
+* C# 12
+* .NET 8
+* SQLServer
+
+## Infrastructures
+### CI / CD
+* Github Actions
+
+### SCM
+* Github
+
+## How To Local Dev
+この項では、Local開発を行う上で、各種リソースをセットアップする方法を説明する。
+
+### Use MSSQL On Docker
+`databases` フォルダの`StartupSqlserver.bat`をダブルクリックする。
+
+### Use Redis On Docker
+`redis` フォルダの`RunRedis.bat`をダブルクリックする。
+
+### Use Mail Fake Server
+`mail`フォルダの`RunMail.bat`をダブルクリックする。
+
+#### Fake Serverへの接続情報
+`server:`  
+=> `localhost` ※ Docker To Dockerの場合は`Host.Docker.Internal`  
+`port:`  
+=> `2197`  
+
+#### mail boxへの接続
+http://127.0.0.1:1592/ ※ブラウザでアクセス可能
+
 `dotnet build -c Release --property:AutoSwaggerToFile=true`
 
 ## using EF Core Tools

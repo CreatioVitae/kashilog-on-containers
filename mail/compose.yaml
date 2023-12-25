@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  transaction-mail-kashilog:
+    container_name: transaction-mail-kashilog
+    image: schickling/mailcatcher:latest
+    ports: 
+      - "2197:1025"
+      - "1592:1080"
