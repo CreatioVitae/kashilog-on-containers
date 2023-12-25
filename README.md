@@ -35,6 +35,24 @@ http://127.0.0.1:1592/ ※ブラウザでアクセス可能
 
 `dotnet build -c Release --property:AutoSwaggerToFile=true`
 
+### Use Image Mock Server
+`image-mock-server\dummy`フォルダの`StartupImageMoqServer.bat`をダブルクリックする。
+
+### Startup Moq Api(他Serviceとの統合テスト時等に利用する用途)
+#### 事前条件
+KashilogのSQLServerを起動させておくこと。
+
+#### Startup Kashilog Moq Api
+`StartupTestApiKashilogContainer.bat`をダブルクリックする。
+
+## Update swagger.json
+下記commandを叩くことで生成可能。  
+`dotnet build -c Release --property:AutoSwaggerToFile=true`
+
+## Generate ApiClient Samples
+`ApiClientExamples` フォルダの`GenerateExampleApiClient.bat`をダブルクリックする。  
+`Examples.ApiClient.Kashilog`に.NET8のApiClientが生成される。  
+
 ## using EF Core Tools
 この項では、EF Coreでのリバースエンジニアリングを行う方法を説明する。
 ### EF Core ToolsのUpdate
