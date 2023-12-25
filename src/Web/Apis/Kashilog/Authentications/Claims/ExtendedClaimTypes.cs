@@ -1,7 +1,7 @@
 namespace Api.Kashilog.Authentications.Claims;
 
 public static class ExtendedClaimTypes {
-    const string ClaimTypesKashilogNamespace = "http://schemas.ozmall.co.jp/members/ws/2016/08/web-front-identity/claims";
+    const string ClaimTypesKashilogNamespace = "http://schemas.kashilog.co.jp/members/ws/2016/08/web-front-identity/claims";
 
     public const string HashedUid = ClaimTypesKashilogNamespace + "/hashed-uid";
     public const string OzName = ClaimTypesKashilogNamespace + "/oz-name";
