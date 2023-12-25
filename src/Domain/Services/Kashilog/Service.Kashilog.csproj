@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BclExtensionPack.Mail" Version="0.5.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Infrastructure\Databases\Kashilog\Database.Kashilog.csproj" />
     <ProjectReference Include="..\..\Caches\Kashilog\Cache.Kashilog.csproj" />
     <ProjectReference Include="..\..\Repositories\Constraints\Kashilog\Repository.Constraints.Kashilog.csproj" />
