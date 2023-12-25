@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  openapi-generator-client:
+    container_name: openapi-generator-Client-kashilog
+    image: openapitools/openapi-generator-cli
+    volumes:
+      - ../:/local
+    command: generate -g csharp --additional-properties=targetFramework=net8.0 --additional-properties=packageName=Examples.ApiClient.Kashilog -i local/src/Web/Apis/Kashilog/swagger.json -o local/ApiClientExamples/Examples.ApiClient.Kashilog
