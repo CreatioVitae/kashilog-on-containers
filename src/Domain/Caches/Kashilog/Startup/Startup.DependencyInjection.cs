@@ -3,7 +3,7 @@ using RedisServerWrapper;
 using System.Reflection;
 
 // ReSharper disable once CheckNamespace
-namespace Cache.Members;
+namespace Cache.Kashilog;
 
 public static class StartupExtensionLibrary {
     public static IServiceCollection AddScopedServicesFromKashilogCache(this IServiceCollection services, RedisSettings redisSettings) =>

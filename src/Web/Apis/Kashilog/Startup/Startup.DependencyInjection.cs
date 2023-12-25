@@ -1,5 +1,4 @@
-using Cache.Members;
-using DomainObject.Kashilog.Contexts;
+using Cache.Kashilog;
 using Repository.Kashilog;
 
 // ReSharper disable once CheckNamespace
