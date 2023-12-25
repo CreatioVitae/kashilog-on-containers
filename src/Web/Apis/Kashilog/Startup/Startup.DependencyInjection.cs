@@ -1,3 +1,4 @@
+using ApiClient.Dummy.Startup;
 using Cache.Kashilog;
 using Repository.Kashilog;
 
@@ -12,7 +13,8 @@ public static class StartupExtensionLibrary {
             .AddScopedServicesFromKashilogCache(configuration.GetRedisSettings())
             .AddScopedServicesFromKashilogService()
             .AddScopedServicesFromKashilogWebApi()
-            .AddRequestContext<RequestContext>(configuration.GetAvailableValueByKey($"requestContextSettings:timezoneId"));
+            .AddRequestContext<RequestContext>(configuration.GetAvailableValueByKey($"requestContextSettings:timezoneId"))
+            .AddApiClientsFromDummyApiClient(configuration);
 
         return services;
     }

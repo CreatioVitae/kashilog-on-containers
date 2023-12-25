@@ -1,31 +1,33 @@
 using Api.Kashilog.Tests.TestContexts;
+using ApiClient.Dummy.ImageClients;
 using BclExtensionPack.Mail;
 using Cache.Kashilog.Dummies;
 using System.Linq;
+using System.Net.Http;
 
-namespace Api.Kashilog.Tests; 
+namespace Api.Kashilog.Tests;
 public class ProductTest(ApiKashilogTestContext testContext) : IDisposable, IClassFixture<ApiKashilogTestContext> {
     ApiKashilogTestContext TestContext { get; } = testContext;
 
-    [Fact]
-    public void AlwaysTrueTest() {
-        var expect = true;
+    private const string RequestUri = "product";
 
-        Assert.True(expect);
+    [Fact(DisplayName = "GetProductsAsync_正常完了ケース")]
+    [Trait("TestTarget", "Request - Response_usingTestHost")]
+    public async Task GetProductsAsync_CaseCompleteAsync() {
+        const string token = "a";
+
+        var requestMessage = new HttpRequestMessage(HttpMethod.Get, RequestUri).ApplyTokenAuthorizationHeader(token);
+
+        var response = await TestContext.HttpClient.SendAsync(requestMessage);
+
+        response.EnsureSuccessStatusCode();
     }
-
-    [Fact]
-    public void AlwaysFalseTest() {
-        var expect = false;
-
-        Assert.False(expect);
-    }
-
+    
     [Fact(DisplayName = "SQLServer接続テスト")]
     public async Task DatabaseConnectionTest() {
         await using var sqlManager = TestContext.GetSqlManager();
 
-        var expectCount = 0;
+        var expectCount = 56;
 
         var actualCount = await sqlManager.GetValueAsync<int>(@"SELECT COUNT(*) FROM kashi.MstProduct;");
 
@@ -91,6 +93,16 @@ public class ProductTest(ApiKashilogTestContext testContext) : IDisposable, ICla
         Assert.Equal(expectFoo, (await cache.GetAsync(fooFieldValue)).Value);
         Assert.Equal(expectBar, (await cache.GetAsync(barFieldValue)).Value);
         Assert.Equal(expectBaz, (await cache.GetAsync(bazFieldValue)).Value);
+    }
+    
+    [Fact(DisplayName = "画像の読み込み_正常完了")]
+    [Trait("TestTarget", "GetImageByteArrayAsync")]
+    public async Task GetImageByteArrayTest_CaseCompletedAsync() {
+        var dummyImageClient =new DummyImageClient(TestContext.DummyImageHttpClient);
+
+        var response = await dummyImageClient.GetImageByteArrayAsync("sample.jpg");
+
+        Assert.NotNull(response);
     }
 
     public void Dispose() =>
