@@ -392,3 +392,6 @@ yarn-error.log*
 
 # dacpac generated results
 dacpac-generated-results/
+
+# ApiClient Examples
+Examples.ApiClient.Kashilog/
