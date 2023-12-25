@@ -1,4 +1,5 @@
 using Database.Kashilog.DbContexts;
+using RedisServerWrapper;
 
 namespace Api.Kashilog.Tests.TestContexts;
 
@@ -8,6 +9,9 @@ public class ApiKashilogTestContext : IDisposable {
 
     public IConfiguration GetConfiguration() =>
         AssemblyInitializer.Configuration;
+
+    public RedisServer GetRedisServer() =>
+        AssemblyInitializer.RedisServer;
 
     public DateTime GetDatetimeCurrent() =>
         TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
