@@ -1,0 +1,21 @@
+@fqdn=localhost:44570
+
+@token = a
+
+# GetProducts-正常完了
+GET https://{{fqdn}}/product
+Authorization: Bearer {{token}}
+
+###
+# GetProducts-未認証
+GET https://{{fqdn}}/product
+
+###
+# PostProducts-405
+POST https://{{fqdn}}/product
+Content-Type: application/json
+
+{
+  "name": "hoge",
+  "id": "1"
+}

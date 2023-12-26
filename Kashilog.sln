@@ -71,6 +71,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.Kashilog.Tests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Kashilog.Tests", "tests\Web\Apis\Kashilog.Tests\Api.Kashilog.Tests.csproj", "{1FA76D84-560E-4941-AED4-F036FFF60FBF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManualVerifications", "ManualVerifications", "{9A1E3BF6-5297-47AA-A399-F3C4F2C56369}"
+	ProjectSection(SolutionItems) = preProject
+		tests\Web\ManualVerifications\Api.Kashilog.Goldenpass.http = tests\Web\ManualVerifications\Api.Kashilog.Goldenpass.http
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +170,7 @@ Global
 		{39EAB561-375E-409F-9F18-568B50AC798F} = {19695C48-DCAB-4DD8-A302-21FD78CDDA31}
 		{D657868D-26F5-4A1A-91A6-1BFEF4956B2B} = {E4684272-F530-4229-8F65-7F53B7DC7BC8}
 		{1FA76D84-560E-4941-AED4-F036FFF60FBF} = {D812DD67-D0FF-4D7E-85F5-E7EC30366976}
+		{9A1E3BF6-5297-47AA-A399-F3C4F2C56369} = {8C9F1EBF-36ED-45C3-A09B-187AC6009F63}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C5CFAEE9-EDD0-472C-B118-B988CC86BD3D}
