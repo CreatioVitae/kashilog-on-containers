@@ -12,8 +12,6 @@ public static class StartupExtensionLibrary {
         var dummyImageClientOptions = configuration.GetSection(ApiClientOptions.GetDefaultSection(nameof(DummyImageClient))).GetAvailable<ApiClientOptions>();
         var dummyImageClientBasicAuthOptions = configuration.GetSection(ApiClientOptions.GetDefaultSection(nameof(DummyImageClient))).GetAvailable<BasicAuthenticationOptions>();
 
-       
-
         services.AddApiClient<DummyImageClient>(
             c => {
                 c.BaseAddress = new(dummyImageClientOptions.BaseAddress);
@@ -30,7 +28,7 @@ public static class StartupExtensionLibrary {
                 RetryPolicyOption = RetryPolicyOption.CreateDefault() with { ClientErrorStatusCodesRequiresRetry = new List<HttpStatusCode> { HttpStatusCode.NotFound } }
             }
         );
-        
+
         return services;
     }
 }

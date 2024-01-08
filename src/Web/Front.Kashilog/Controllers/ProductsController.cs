@@ -1,7 +1,7 @@
+using DomainObject.Kashilog.ConstantValues.Shared;
 using Front.Kashilog.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using DomainObject.Kashilog.ConstantValues.Shared;
 
 namespace Front.Kashilog.Controllers;
 public class ProductsController : Controller {
@@ -27,7 +27,7 @@ public class ProductsController : Controller {
 
 static file class StringExtensions {
     internal static DeviceType GetDeviceType(this string? userAgent) {
-        if(userAgent == null) {
+        if (userAgent == null) {
             return DeviceType.Pc;
         }
 

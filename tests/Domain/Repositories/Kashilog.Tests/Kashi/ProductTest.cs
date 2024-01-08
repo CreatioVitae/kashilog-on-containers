@@ -15,7 +15,7 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
 
         var repository = new ProductsRepository(sqlManager);
         var actual = await repository.FindProductByIdAsync(1);
-        
+
         Assert.Equal(
             new() {
                 ProductId = 1,
@@ -53,7 +53,7 @@ public class ProductTest(RepositoryKashilogTestContext testContext) : IDisposabl
             PublisherCompanyId = 1
         };
 
-        var e =  Assert.Throws<ValidationException>(() => ObjectValidator.ThrowIfInvalid(createParam));
+        var e = Assert.Throws<ValidationException>(() => ObjectValidator.ThrowIfInvalid(createParam));
         Assert.Equal(ProductsConstraintValues.ProductName.LengthOutOfRangeErrorMessage, e.Message);
     }
 

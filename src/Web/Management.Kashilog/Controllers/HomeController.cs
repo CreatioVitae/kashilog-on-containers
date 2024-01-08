@@ -1,4 +1,4 @@
-﻿using Management.Kashilog.Models;
+using Management.Kashilog.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
