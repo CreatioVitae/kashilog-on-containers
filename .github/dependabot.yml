@@ -6,6 +6,6 @@ updates:
       interval: "daily"
 
   - package-ecosystem: "npm"
-    directory: "/" # Location of package manifests
+    directory: "/src/Web/Front.Kashilog/ClientApp" # Location of package manifests
     schedule:
       interval: "daily"
