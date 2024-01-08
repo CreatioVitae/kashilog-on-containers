@@ -22,7 +22,7 @@ public class ProductTest(ApiKashilogTestContext testContext) : IDisposable, ICla
 
         response.EnsureSuccessStatusCode();
     }
-    
+
     [Fact(DisplayName = "SQLServer接続テスト")]
     public async Task DatabaseConnectionTest() {
         await using var sqlManager = TestContext.GetSqlManager();
@@ -94,11 +94,11 @@ public class ProductTest(ApiKashilogTestContext testContext) : IDisposable, ICla
         Assert.Equal(expectBar, (await cache.GetAsync(barFieldValue)).Value);
         Assert.Equal(expectBaz, (await cache.GetAsync(bazFieldValue)).Value);
     }
-    
+
     [Fact(DisplayName = "画像の読み込み_正常完了")]
     [Trait("TestTarget", "GetImageByteArrayAsync")]
     public async Task GetImageByteArrayTest_CaseCompletedAsync() {
-        var dummyImageClient =new DummyImageClient(TestContext.DummyImageHttpClient);
+        var dummyImageClient = new DummyImageClient(TestContext.DummyImageHttpClient);
 
         var response = await dummyImageClient.GetImageByteArrayAsync("sample.jpg");
 

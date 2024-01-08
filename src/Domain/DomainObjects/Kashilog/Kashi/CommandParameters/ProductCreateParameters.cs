@@ -45,7 +45,7 @@ public record ProductCreateParameters {
     public int PublisherCompanyId { get; init; }
 
     public static ValidationResult? ValidateValidBeginDateTime(DateTime date, ValidationContext context) =>
-        ValidateValidDateTimeLocal(date,nameof(ValidBeginDateTime), context);
+        ValidateValidDateTimeLocal(date, nameof(ValidBeginDateTime), context);
 
     public static ValidationResult? ValidateValidEndDateTime(DateTime date, ValidationContext context) =>
         ValidateValidDateTimeLocal(date, nameof(ValidEndDateTime), context);
