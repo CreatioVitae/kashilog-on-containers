@@ -14,7 +14,7 @@ public class ProductsController : Controller {
     public IActionResult Index() {
         ViewBag.ApiUrl = Configuration["KashilogSettings:ApiUrl"] ?? throw new InvalidOperationException();
 
-        ViewBag.DeviceType = Request.Headers.UserAgent.IsAny(ua => ua.GetDeviceType() == DeviceType.SmartPhone) ? DeviceType.SmartPhone : DeviceType.Pc;
+        ViewBag.DeviceType = Request.Headers.UserAgent.IsNotNullAndAny(ua => ua.GetDeviceType() == DeviceType.SmartPhone) ? DeviceType.SmartPhone : DeviceType.Pc;
 
         return View();
     }

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BclExtensionPack.CoreLib" Version="0.15.1" />
+    <PackageReference Include="BclExtensionPack.CoreLib" Version="0.16.1" />
     <PackageReference Include="Service.Extensions.DependencyInjection" Version="1.11.1" />
   </ItemGroup>
 </Project>
