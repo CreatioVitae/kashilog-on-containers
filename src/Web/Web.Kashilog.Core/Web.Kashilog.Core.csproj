@@ -11,6 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="WebPack.CoreLib" Version="0.16.1" />
+    <PackageReference Include="WebPack.CoreLib" Version="0.17.2" />
   </ItemGroup>
 </Project>
